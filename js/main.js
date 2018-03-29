@@ -1,44 +1,29 @@
 const templates = document.querySelector(`#templates`).content;
-const screens = templates.querySelectorAll(`section`);
+const listOfGameScreens = templates.querySelectorAll(`section`);
 const mainScreen = document.querySelector(`.main`);
-let checkKey = false;
-let numberScreen = 0;
-let arrScreens = [
-  screens[0], screens[1], screens[3], screens[2], screens[4], screens[5], screens[6], screens[7],
-  screens[8], screens[9]
+let SortedListAppScreens = [
+  listOfGameScreens[0], listOfGameScreens[1], listOfGameScreens[3], listOfGameScreens[2], listOfGameScreens[4], listOfGameScreens[5], listOfGameScreens[6], listOfGameScreens[7],
+  listOfGameScreens[8], listOfGameScreens[9]
 ];
 
+let screenNumber = 0;
 
 const showScreen = () => {
   mainScreen.innerHTML = ``;
-  mainScreen.appendChild(arrScreens[numberScreen]);
+  mainScreen.appendChild(SortedListAppScreens[screenNumber]);
 };
 
-
 document.addEventListener(`keydown`, (e) => {
-  if (e.key === `Alt`) {
-    checkKey = true;
-  }
-});
-
-document.addEventListener(`keydown`, (e) => {
-  if (numberScreen < 9) {
-    if (e.key === `ArrowRight` && checkKey === true) {
-      showScreen(numberScreen);
-      ++numberScreen;
+  if (screenNumber < 9) {
+    if ((e.altKey) && e.key === `ArrowRight`) {
+      showScreen(screenNumber);
+      ++screenNumber;
     }
   }
-
-  if (numberScreen > 0) {
-    if (e.key === `ArrowLeft` && checkKey === true) {
-      --numberScreen;
-      showScreen(numberScreen);
+  if (screenNumber > 0) {
+    if ((e.altKey) && e.key === `ArrowLeft`) {
+      --screenNumber;
+      showScreen(screenNumber);
     }
-  }
-});
-
-document.addEventListener(`keyup`, (e) => {
-  if (e.key === `Alt`) {
-    checkKey = false;
   }
 });
