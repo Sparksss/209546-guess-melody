@@ -1,16 +1,20 @@
 const templates = document.querySelector(`#templates`).content;
-const listOfGameScreens = templates.querySelectorAll(`section`);
 const mainScreen = document.querySelector(`.main`);
-let SortedListAppScreens = [
-  listOfGameScreens[0], listOfGameScreens[1], listOfGameScreens[3], listOfGameScreens[2], listOfGameScreens[4], listOfGameScreens[5], listOfGameScreens[6], listOfGameScreens[7],
-  listOfGameScreens[8], listOfGameScreens[9]
+let screensByOrder = [
+  `.main--welcome`, `.logo`, `.main--level-artist`, `.main--level-genre`,
+  `.main--result`, `.logo`, `.main--result`,
+  `.logo`, `.main--result`, `.logo`
 ];
 
 let screenNumber = 0;
 
+const allScreens = screensByOrder.map((screenTemplate) => {
+  return templates.querySelector(screenTemplate);
+});
+
 const showScreen = () => {
   mainScreen.innerHTML = ``;
-  mainScreen.appendChild(SortedListAppScreens[screenNumber]);
+  mainScreen.appendChild(allScreens[screenNumber]);
 };
 
 document.addEventListener(`keydown`, (e) => {
