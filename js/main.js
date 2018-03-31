@@ -1,5 +1,12 @@
+import createElement from './createElem';
+
+
+createElement(`<div>Разметка исходного шаблона</div>`);
+
 const templates = document.querySelector(`#templates`).content;
 const mainScreen = document.querySelector(`.main`);
+const MAX_VALUE_SCREENS = 9;
+const MIN_VALUE_SCREENS = 0;
 let screensByOrder = [
   `.main--welcome`, `.logo`, `.main--level-artist`, `.main--level-genre`,
   `.main--result`, `.logo`, `.main--result`,
@@ -17,17 +24,16 @@ const showScreen = () => {
   mainScreen.appendChild(allScreens[screenNumber]);
 };
 
-document.addEventListener(`keydown`, (e) => {
-  if (screenNumber < 9) {
-    if ((e.altKey) && e.key === `ArrowRight`) {
-      showScreen(screenNumber);
+document.addEventListener(`keydown`, (evt) => {
+  if (screenNumber < MAX_VALUE_SCREENS) {
+    if ((evt.altKey) && evt.key === `ArrowRight`) {
       ++screenNumber;
     }
   }
-  if (screenNumber > 0) {
-    if ((e.altKey) && e.key === `ArrowLeft`) {
+  if (screenNumber > MIN_VALUE_SCREENS) {
+    if ((evt.altKey) && evt.key === `ArrowLeft`) {
       --screenNumber;
-      showScreen(screenNumber);
     }
   }
+  showScreen(screenNumber);
 });
