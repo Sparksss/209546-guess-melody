@@ -1,39 +1,40 @@
-import createElement from './createElem';
+import renderScreen from "./renderScreenModule";
+import welcome from "./welcomeModule";
+import artist from "./artistModule";
+import genre from "./genreModule";
+import success from "./resultSuccessModule";
+import timeOut from "./timeOutModule";
+import attemptsEnded from "./attemptsEndedModule";
 
-
-createElement(`<div>Разметка исходного шаблона</div>`);
-
-const templates = document.querySelector(`#templates`).content;
-const mainScreen = document.querySelector(`.main`);
-const MAX_VALUE_SCREENS = 9;
-const MIN_VALUE_SCREENS = 0;
-let screensByOrder = [
-  `.main--welcome`, `.logo`, `.main--level-artist`, `.main--level-genre`,
-  `.main--result`, `.logo`, `.main--result`,
-  `.logo`, `.main--result`, `.logo`
-];
-
-let screenNumber = 0;
-
-const allScreens = screensByOrder.map((screenTemplate) => {
-  return templates.querySelector(screenTemplate);
-});
-
-const showScreen = () => {
-  mainScreen.innerHTML = ``;
-  mainScreen.appendChild(allScreens[screenNumber]);
+const getRandomResult = () => {
+  return parseInt(Math.random() * (3 - 1) + 1, 10);
 };
 
-document.addEventListener(`keydown`, (evt) => {
-  if (screenNumber < MAX_VALUE_SCREENS) {
-    if ((evt.altKey) && evt.key === `ArrowRight`) {
-      ++screenNumber;
-    }
+const resultScreens = [
+  success,
+  timeOut,
+  attemptsEnded
+];
+
+renderScreen(welcome);
+
+document.addEventListener(`click`, (evt) => {
+  let currentScreen;
+  if (evt.target.classList.contains(`main-play`)) {
+    currentScreen = artist;
+  } else if (evt.target.classList.contains(`main-answer`)) {
+    currentScreen = genre;
+  } else if (evt.target.classList.contains(`player-control--play`)) {
+    evt.preventDefault();
+    document.querySelector(`.genre-answer-send`).disabled = false;
+  } else if (evt.target.classList.contains(`genre-answer-send`)) {
+    evt.preventDefault();
+    currentScreen = resultScreens[getRandomResult()];
+  } else if (evt.target.classList.contains(`main-replay`)) {
+    evt.preventDefault();
+    currentScreen = welcome;
   }
-  if (screenNumber > MIN_VALUE_SCREENS) {
-    if ((evt.altKey) && evt.key === `ArrowLeft`) {
-      --screenNumber;
-    }
+  if (currentScreen) {
+    renderScreen(currentScreen);
   }
-  showScreen(screenNumber);
 });
