@@ -3,7 +3,7 @@ const genreElement = `<section class="main main--level main--level-genre">
       <circle
         cx="390" cy="390" r="370"
         class="timer-line"
-        style="filter: url(.#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"></circle>
+        style="filter: url(..#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"></circle>
 
       <div class="timer-value" xmlns="http://www.w3.org/1999/xhtml">
         <span class="timer-value-mins">05</span><!--

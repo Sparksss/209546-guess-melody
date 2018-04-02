@@ -1,11 +1,11 @@
-import renderScreen from "./renderScreenModule";
+import renderScreen from "./templates/renderScreenModule";
 import createElement from './createElem';
-import welcome from "./welcomeModule";
-import artist from "./artistModule";
-import genre from "./genreModule";
-import success from "./resultSuccessModule";
-import timeOut from "./timeOutModule";
-import attemptsEnded from "./attemptsEndedModule";
+import welcome from "./templates/welcomeModule";
+import artist from "./templates/artistModule";
+import genre from "./templates/genreModule";
+import success from "./templates/resultSuccessModule";
+import timeOut from "./templates/timeOutModule";
+import attemptsEnded from "./templates/attemptsEndedModule";
 
 const getRandomResult = () => {
   return parseInt(Math.random() * (3 - 1) + 1, 10);
