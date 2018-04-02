@@ -1,4 +1,5 @@
 import renderScreen from "./renderScreenModule";
+import createElement from './createElem';
 import welcome from "./welcomeModule";
 import artist from "./artistModule";
 import genre from "./genreModule";
@@ -16,7 +17,7 @@ const resultScreens = [
   attemptsEnded
 ];
 
-renderScreen(welcome);
+renderScreen(createElement(welcome));
 
 document.addEventListener(`click`, (evt) => {
   let currentScreen;
@@ -35,6 +36,6 @@ document.addEventListener(`click`, (evt) => {
     currentScreen = welcome;
   }
   if (currentScreen) {
-    renderScreen(currentScreen);
+    renderScreen(createElement(currentScreen));
   }
 });

@@ -1,6 +1,4 @@
-import createElement from "./createElem";
-
-const timeOut = createElement`  <section class="main main--result">
+const timeOut = `<section class="main main--result">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
 
     <h2 class="title">Увы и ах!</h2>
