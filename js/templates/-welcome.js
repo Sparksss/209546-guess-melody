@@ -1,4 +1,7 @@
-const welcomeElement = `<section class="main main--welcome">
+import createElement from './../-create-elem';
+import renderScreen from "./../-render-screen";
+
+const welcomeElement = createElement`<section class="main main--welcome">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
     <button class="main-play">Начать игру</button>
     <h2 class="title main-title">Правила игры</h2>
@@ -9,5 +12,9 @@ const welcomeElement = `<section class="main main--welcome">
     </p>
   </section>`;
 
-export default welcomeElement;
+const renderWelcomeScreen = () => {
+  renderScreen(welcomeElement);
+};
+
+export default renderWelcomeScreen;
 

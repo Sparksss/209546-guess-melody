@@ -1,4 +1,7 @@
-const genreElement = `<section class="main main--level main--level-genre">
+import createElement from './../-create-elem';
+import renderScreen from "./../-render-screen";
+
+const genreElement = createElement`<section class="main main--level main--level-genre">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle
         cx="390" cy="390" r="370"
@@ -81,4 +84,8 @@ const genreElement = `<section class="main main--level main--level-genre">
     </div>
   </section>`;
 
-export default genreElement;
+const renderGenre = () => {
+  renderScreen(genreElement);
+};
+
+export default renderGenre;

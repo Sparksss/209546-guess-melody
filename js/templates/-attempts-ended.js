@@ -1,4 +1,7 @@
-const attemptsEnded = `<section class="main main--result">
+import createElement from './../-create-elem';
+import renderScreen from "./../-render-screen";
+
+const attemptsEnded = createElement`<section class="main main--result">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
 
     <h2 class="title">Какая жалость!</h2>
@@ -6,4 +9,8 @@ const attemptsEnded = `<section class="main main--result">
     <span role="button" tabindex="0" class="main-replay">Попробовать ещё раз</span>
   </section>`;
 
-export default attemptsEnded;
+const renderAttemptsEnded = () => {
+  renderScreen(attemptsEnded);
+};
+
+export default renderAttemptsEnded;

@@ -1,4 +1,7 @@
-const timeOut = `<section class="main main--result">
+import createElement from './../-create-elem';
+import renderScreen from "./../-render-screen";
+
+const timeOut = createElement`<section class="main main--result">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
 
     <h2 class="title">Увы и ах!</h2>
@@ -6,4 +9,9 @@ const timeOut = `<section class="main main--result">
     <span role="button" tabindex="0" class="main-replay">Попробовать ещё раз</span>
   </section>`;
 
-export default timeOut;
+
+const renderTimeOut = () => {
+  renderScreen(timeOut);
+};
+
+export default renderTimeOut;

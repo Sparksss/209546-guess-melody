@@ -1,4 +1,7 @@
-const artistElement = `<section class="main main--level main--level-artist">
+import createElement from './../-create-elem';
+import renderScreen from "./../-render-screen";
+
+const artistElement = createElement`<section class="main main--level main--level-artist">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle
         cx="390" cy="390" r="370"
@@ -59,4 +62,8 @@ const artistElement = `<section class="main main--level main--level-artist">
   </section>`;
 
 
-export default artistElement;
+const renderArtistScreen = () => {
+  renderScreen(artistElement);
+};
+
+export default renderArtistScreen;

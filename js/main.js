@@ -1,11 +1,9 @@
-import renderScreen from "./templates/renderScreenModule";
-import createElement from './createElem';
-import welcome from "./templates/welcomeModule";
-import artist from "./templates/artistModule";
-import genre from "./templates/genreModule";
-import success from "./templates/resultSuccessModule";
-import timeOut from "./templates/timeOutModule";
-import attemptsEnded from "./templates/attemptsEndedModule";
+import welcome from "./templates/-welcome";
+import artist from "./templates/-artist-module";
+import genre from "./templates/-genre";
+import success from "./templates/-result-success";
+import timeOut from "./templates/-time-out";
+import attemptsEnded from "./templates/-attempts-ended";
 
 const getRandomResult = () => {
   return parseInt(Math.random() * (3 - 1) + 1, 10);
@@ -17,25 +15,25 @@ const resultScreens = [
   attemptsEnded
 ];
 
-renderScreen(createElement(welcome));
+welcome();
 
 document.addEventListener(`click`, (evt) => {
-  let currentScreen;
+  let renderScreen;
   if (evt.target.classList.contains(`main-play`)) {
-    currentScreen = artist;
-  } else if (evt.target.classList.contains(`main-answer`)) {
-    currentScreen = genre;
+    renderScreen = artist;
+  } else if (evt.target.classList.contains(`main-answer-preview`)) {
+    renderScreen = genre;
   } else if (evt.target.classList.contains(`player-control--play`)) {
     evt.preventDefault();
     document.querySelector(`.genre-answer-send`).disabled = false;
   } else if (evt.target.classList.contains(`genre-answer-send`)) {
     evt.preventDefault();
-    currentScreen = resultScreens[getRandomResult()];
+    renderScreen = resultScreens[getRandomResult()];
   } else if (evt.target.classList.contains(`main-replay`)) {
     evt.preventDefault();
-    currentScreen = welcome;
+    renderScreen = welcome;
   }
-  if (currentScreen) {
-    renderScreen(createElement(currentScreen));
+  if (renderScreen) {
+    renderScreen();
   }
 });
