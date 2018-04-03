@@ -1,8 +1,8 @@
-import createElement from './../-create-elem';
-import renderScreen from "./../-render-screen";
-import welcome from "./-welcome";
+import createElement from '../create-elem';
+import renderScreen from "../render-screen";
+import welcomeScreen from "./welcome-module";
 
-const attemptsEnded = createElement`<section class="main main--result">
+const attemptsEndedModule = createElement`<section class="main main--result">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
 
     <h2 class="title">Какая жалость!</h2>
@@ -11,13 +11,13 @@ const attemptsEnded = createElement`<section class="main main--result">
   </section>`;
 
 const renderAttemptsEnded = () => {
-  renderScreen(attemptsEnded);
+  renderScreen(attemptsEndedModule);
 };
 
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`main-replay`)) {
     evt.preventDefault();
-    welcome();
+    welcomeScreen();
   }
 });
 

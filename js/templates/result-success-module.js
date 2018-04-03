@@ -1,8 +1,8 @@
-import createElement from './../-create-elem';
-import renderScreen from "./../-render-screen";
-import welcome from "./-welcome";
+import createElement from '../create-elem';
+import renderScreen from "../render-screen";
+import welcomeScreen from "./welcome-module";
 
-const resultSuccess = createElement`<section class="main main--result">
+const resultSuccessModule = createElement`<section class="main main--result">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
 
     <h2 class="title">Вы настоящий меломан!</h2>
@@ -15,14 +15,14 @@ const resultSuccess = createElement`<section class="main main--result">
 
 
 const renderResultSucces = () => {
-  renderScreen(resultSuccess);
+  renderScreen(resultSuccessModule);
 };
 
 
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`main-replay`)) {
     evt.preventDefault();
-    welcome();
+    welcomeScreen();
   }
 });
 

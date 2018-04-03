@@ -1,3 +1,3 @@
-import welcome from "./templates/-welcome";
+import welcomeScreen from "./templates/welcome-module";
 
-welcome();
+welcomeScreen();

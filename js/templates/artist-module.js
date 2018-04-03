@@ -1,6 +1,6 @@
-import createElement from './../-create-elem';
-import renderScreen from "./../-render-screen";
-import genre from "./-genre";
+import createElement from '../create-elem';
+import renderScreen from "../render-screen";
+import genreScreen from "./genre-module";
 
 const artistElement = createElement`<section class="main main--level main--level-artist">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
@@ -69,7 +69,7 @@ const renderArtistScreen = () => {
 
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`main-answer-preview`)) {
-    genre();
+    genreScreen();
   }
 });
 
