@@ -3,7 +3,7 @@ import renderScreen from "../render-screen";
 import successScreen from "./result-success-module";
 import timeOutScreen from "./time-out-module";
 import attemptsEndedScreen from "./attempts-ended-module";
-import getRandomeResult from "./../getRandomResultModule";
+import getRandomResult from "./../getRandomResultModule";
 
 const genreElement = createElement`<section class="main main--level main--level-genre">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
@@ -105,7 +105,7 @@ document.addEventListener(`click`, (evt) => {
     document.querySelector(`.genre-answer-send`).disabled = false;
   } else if (evt.target.classList.contains(`genre-answer-send`)) {
     evt.preventDefault();
-    resultScreens[getRandomeResult()]();
+    resultScreens[getRandomResult()]();
   }
 });
 
