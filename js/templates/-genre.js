@@ -1,5 +1,8 @@
 import createElement from './../-create-elem';
 import renderScreen from "./../-render-screen";
+import success from "./-result-success";
+import timeOut from "./-time-out";
+import attemptsEnded from "./-attempts-ended";
 
 const genreElement = createElement`<section class="main main--level main--level-genre">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
@@ -87,5 +90,26 @@ const genreElement = createElement`<section class="main main--level main--level-
 const renderGenre = () => {
   renderScreen(genreElement);
 };
+
+const getRandomResult = () => {
+  return parseInt(Math.random() * (3 - 1) + 1, 10);
+};
+
+const resultScreens = [
+  success,
+  timeOut,
+  attemptsEnded
+];
+
+
+document.addEventListener(`click`, (evt) => {
+  if (evt.target.classList.contains(`player-control--play`)) {
+    evt.preventDefault();
+    document.querySelector(`.genre-answer-send`).disabled = false;
+  } else if (evt.target.classList.contains(`genre-answer-send`)) {
+    evt.preventDefault();
+    resultScreens[getRandomResult()]();
+  }
+});
 
 export default renderGenre;
