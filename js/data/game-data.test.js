@@ -17,7 +17,10 @@ const getResults = (answers, numbersOfNotes = 0) => {
   return points;
 };
 
-const sortGameResults = (statistics, {points, numbersOfNotes, theRestOfTime}) => {
+const sortGameResults = (statistics, {points}) => {
+  if (!points) {
+    return -1;
+  }
   let n = 0;
   const quantytiPoints = statistics.length;
   let playerPosition = 0;
@@ -39,15 +42,16 @@ const sortGameResults = (statistics, {points, numbersOfNotes, theRestOfTime}) =>
 
 const createTimeLimit = (time) => {
   if (!time && typeof time === `number`) {
-    return `time should be greater than zero`;
+    return -1;
   }
   const timer = {
     timeLimit: time,
+    endOfTime: ``,
     tick() {
       if (this.timeLimit > 0) {
         --this.timeLimit;
       } else {
-        return `time is over!`;
+        this.endOfTime = `time is over!`;
       }
     }
   };
@@ -72,10 +76,10 @@ describe(`Check user points`, () => {
 
 describe(`Check points of users`, () => {
   it(`should return a string`, () => {
-    assert.typeOf(sortGameResults([10, 11, 15, 17, 23], {points: 14, numbersOfNotes: 1, theRestOfTime: 30}), `string`);
+    assert.typeOf(sortGameResults([10, 11, 15, 17, 23], {points: 14}), `string`);
   });
   it(`should return -1 if player results is empty`, () => {
-    assert(sortGameResults([10, 11, 15, 17, 23], {}) === -1, `result player is empty`);
+    assert.equal(-1, sortGameResults([10, 11, 15, 17, 23], {}), `result player is empty`);
   });
 
   describe(`Check timer function`, () => {
