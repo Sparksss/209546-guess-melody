@@ -43,7 +43,7 @@ const createTimeLimit = (time) => {
   }
   const timer = {
     timeLimit: time,
-    tick: () => {
+    tick() {
       if (this.timeLimit > 0) {
         --this.timeLimit;
       } else {
@@ -72,13 +72,16 @@ describe(`Check user points`, () => {
 
 describe(`Check points of users`, () => {
   it(`should return a string`, () => {
-    assert.typeOf(sortGameResults([10, 11, 15, 17, 23], {poinst: 14, numbersOfNotes: 1, theRestOfTime: 30}), `string`);
+    assert.typeOf(sortGameResults([10, 11, 15, 17, 23], {points: 14, numbersOfNotes: 1, theRestOfTime: 30}), `string`);
   });
   it(`should return -1 if player results is empty`, () => {
     assert(sortGameResults([10, 11, 15, 17, 23], {}) === -1, `result player is empty`);
   });
 
-  describe(`timer function`, () => {
+  describe(`Check timer function`, () => {
+    it(`should return -1 if time is zero`, () => {
+      assert(createTimeLimit(0) === -1, `time can't be zero`);
+    });
     it(`should return a object`, () => {
       assert.typeOf(createTimeLimit(50), `object`);
     });
