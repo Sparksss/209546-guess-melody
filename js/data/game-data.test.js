@@ -1,63 +1,7 @@
 import {assert} from "chai";
-
-const getResults = (answers, numbersOfNotes = 0) => {
-  const MIN_ANSWERS = 10;
-  if (!Array.isArray(answers) || answers.length < MIN_ANSWERS || numbersOfNotes === 0) {
-    return -1;
-  }
-
-  let points = answers.reduce((prev, next) => {
-    if (next) {
-      prev++;
-    } else {
-      prev -= 2;
-    }
-    return prev;
-  });
-  return points;
-};
-
-const sortGameResults = (statistics, {points}) => {
-  if (!points) {
-    return -1;
-  }
-  let n = 0;
-  const quantytiPoints = statistics.length;
-  let playerPosition = 0;
-  statistics.push(points);
-  statistics.sort((prev, next) => {
-    return prev > next;
-  });
-
-  for (let i = 0; i < quantytiPoints; i++) {
-    if (statistics[i] === points) {
-      playerPosition = i;
-    }
-  }
-
-  n = playerPosition / quantytiPoints * 10;
-  return `Вы заняли ${playerPosition} место из ${quantytiPoints} игроков. Это лучше, чем у ${n}% игроков`;
-};
-
-
-const createTimeLimit = (time) => {
-  if (!time && typeof time === `number`) {
-    return -1;
-  }
-  const timer = {
-    timeLimit: time,
-    endOfTime: ``,
-    tick() {
-      if (this.timeLimit > 0) {
-        --this.timeLimit;
-      } else {
-        this.endOfTime = `time is over!`;
-      }
-    }
-  };
-
-  return timer;
-};
+import getResults from "./../modules/get-results";
+import sortGameResults from "./../modules/sort-results";
+import createTimeLimit from "./../modules/timer";
 
 
 describe(`Check user points`, () => {
