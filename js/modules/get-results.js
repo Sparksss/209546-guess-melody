@@ -1,18 +1,23 @@
 const MIN_ANSWERS = 10;
+const MAX_TIME_LIMIT_BONUS = 30;
+let sum = 0;
 const getResults = (answers, numbersOfNotes = 0) => {
   if (!Array.isArray(answers) || answers.length < MIN_ANSWERS || numbersOfNotes === 0) {
     return -1;
   }
 
-  let points = answers.reduce((prev, next) => {
-    if (next) {
-      prev++;
+  for (let i = answers.length; i--;) {
+    if (answers[i].answer) {
+      if (answers[i].timeLimit < MAX_TIME_LIMIT_BONUS) {
+        ++sum;
+      }
+      ++sum;
     } else {
-      prev -= 2;
+      sum -= 2;
     }
-    return prev;
-  });
-  return points;
+  }
+
+  return sum;
 };
 
 export default getResults;
