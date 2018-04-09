@@ -1,5 +1,5 @@
+const MIN_ANSWERS = 10;
 const getResults = (answers, numbersOfNotes = 0) => {
-  const MIN_ANSWERS = 10;
   if (!Array.isArray(answers) || answers.length < MIN_ANSWERS || numbersOfNotes === 0) {
     return -1;
   }
