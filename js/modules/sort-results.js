@@ -1,8 +1,8 @@
 const sortGameResults = (statistics, {points, notes, time} = {}) => {
-  if (statistics.length === 0 || !points || !notes || !time) {
+  const quantityPoints = statistics.length;
+  if (quantityPoints === 0 || !points || !notes || !time) {
     return -1;
   }
-  const quantityPoints = statistics.length;
   let playerPosition = 0;
   statistics.push(points);
   statistics.sort((prev, next) => {
