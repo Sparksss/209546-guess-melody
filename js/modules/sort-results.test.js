@@ -10,6 +10,9 @@ const putArray = () => {
 };
 
 describe(`Check points of all users`, () => {
+  it(`should return if game results is empty`, () => {
+    assert(-1, sortGameResults([], {points: 14, notes: 2, time: 10}));
+  });
   it(`should return a object`, () => {
     assert.typeOf(sortGameResults(putArray(), {points: 14, notes: 2, time: 10}), `Object`);
   });

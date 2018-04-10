@@ -1,5 +1,5 @@
 const sortGameResults = (statistics, {points, notes, time} = {}) => {
-  if (!points || !notes || !time) {
+  if (statistics.length === 0 || !points || !notes || !time) {
     return -1;
   }
   const quantityPoints = statistics.length;
