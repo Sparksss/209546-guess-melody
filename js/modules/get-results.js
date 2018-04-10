@@ -1,7 +1,7 @@
 const MIN_ANSWERS = 10;
 const MAX_TIME_LIMIT_BONUS = 30;
-let sum = 0;
 const getResults = (answers, numbersOfNotes = 0) => {
+  let sum = 0;
   if (!Array.isArray(answers) || answers.length < MIN_ANSWERS || numbersOfNotes === 0) {
     return -1;
   }
