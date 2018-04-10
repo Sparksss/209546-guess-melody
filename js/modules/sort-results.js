@@ -2,14 +2,14 @@ const sortGameResults = (statistics, {points, notes, time} = {}) => {
   if (!points || !notes || !time) {
     return -1;
   }
-  const quantytiPoints = statistics.length;
+  const quantityPoints = statistics.length;
   let playerPosition = 0;
   statistics.push(points);
   statistics.sort((prev, next) => {
     return prev > next;
   });
 
-  for (let i = 0; i < quantytiPoints; i++) {
+  for (let i = 0; i < quantityPoints; i++) {
     if (statistics[i] === points) {
       playerPosition = i;
     }
@@ -17,7 +17,7 @@ const sortGameResults = (statistics, {points, notes, time} = {}) => {
 
   return {
     playerPosition,
-    quantytiPoints
+    quantityPoints
   };
 };
 
@@ -25,8 +25,8 @@ const renderStringResult = (results) => {
   if (Object.keys(results).length === 0) {
     return -1;
   }
-  const {playerPosition, quantytiPoints} = results;
-  return `Вы заняли ${playerPosition} место из ${quantytiPoints} игроков. Это лучше, чем у ${playerPosition / quantytiPoints * 10}% игроков`;
+  const {playerPosition, quantityPoints} = results;
+  return `Вы заняли ${playerPosition} место из ${quantityPoints} игроков. Это лучше, чем у ${playerPosition / quantityPoints * 10}% игроков`;
 };
 
 export {sortGameResults, renderStringResult};

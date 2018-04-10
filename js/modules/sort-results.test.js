@@ -9,7 +9,7 @@ const putArray = () => {
   return arr;
 };
 
-describe(`Check points of users`, () => {
+describe(`Check points of all users`, () => {
   it(`should return a object`, () => {
     assert.typeOf(sortGameResults(putArray(), {points: 14, notes: 2, time: 10}), `Object`);
   });
