@@ -1,6 +1,8 @@
 import createElement from "../create-elem";
 import renderScreen from "../render-screen";
 import artistScreen from "./artist-module";
+import {getNotes} from "./pieces/progressBar";
+import {INITIAL_STATE} from "../data/progress-bar-data";
 
 const welcomeElement = createElement`<section class="main main--welcome">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
@@ -20,6 +22,8 @@ const renderWelcomeScreen = () => {
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`main-play`)) {
     artistScreen();
+    document.querySelector(`.main-mistakes`).appendChild(createElement(getNotes(INITIAL_STATE)));
+    document.querySelector(`.timer-value`).appendChild(createElement(getNotes(INITIAL_STATE)));
   }
 });
 
