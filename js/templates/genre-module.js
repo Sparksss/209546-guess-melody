@@ -37,7 +37,7 @@ const genreElement = createElement`<section class="main main--level main--level-
               </div>
             </div>
           </div>
-          <input type="checkbox" name="answer" value="answer-1" id="a-1">
+          <input type="checkbox" name="answer" value="answer" id="a-1">
           <label class="genre-answer-check" for="a-1"></label>
         </div>
 
