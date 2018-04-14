@@ -1,4 +1,4 @@
-const welcomeModel = {
+const startGame = {
   title: `Угадай мелодию`,
   start: `Начать игру`,
   rules: {
@@ -9,4 +9,4 @@ const welcomeModel = {
   }
 };
 
-export {welcomeModel};
+export {startGame};
