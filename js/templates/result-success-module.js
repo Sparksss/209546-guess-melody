@@ -1,21 +1,22 @@
 import createElement from '../create-elem';
 import renderScreen from "../render-screen";
 import welcomeScreen from "./welcome-module";
+import {results} from "./../data/models/endGame";
 
-const resultSuccessModule = createElement`<section class="main main--result">
-    <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
+const resultSuccessModule = (data) => `<section class="main main--result">
+    <section class="logo" title="${data.title}"><h1>${data.title}</h1></section>
 
-    <h2 class="title">Вы настоящий меломан!</h2>
-    <div class="main-stat">За&nbsp;3&nbsp;минуты и 25&nbsp;секунд
-      <br>вы&nbsp;набрали 12 баллов (8 быстрых)
-      <br>совершив 3 ошибки</div>
-    <span class="main-comparison">Вы заняли 2 место из 10. Это&nbsp;лучше чем у&nbsp;80%&nbsp;игроков</span>
-    <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
+    <h2 class="title">${data.succes.title}</h2>
+    <div class="main-stat">${data.succes.time}
+      <br>${data.succes.pointsCount}
+      <br>${data.succes.errorsCount}</div>
+    <span class="main-comparison">${data.succes.raiting}</span>
+    <span role="button" tabindex="0" class="main-replay">${data.playAgainSucces}</span>
   </section>`;
 
 
 const renderResultSucces = () => {
-  renderScreen(resultSuccessModule);
+  renderScreen(createElement(resultSuccessModule(results)));
 };
 
 

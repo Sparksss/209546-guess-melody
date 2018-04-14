@@ -1,7 +1,7 @@
 const game = {
-  levels: [
+  artistLevels: [
     {
-      type: `Genre`,
+      type: `Artist`,
       title: `Кто исполняет эту песню?`,
       answers: [
         {
@@ -22,7 +22,7 @@ const game = {
       ]
     },
     {
-      type: `Genre`,
+      type: `Artist`,
       title: `Кто исполняет эту песню?`,
       answers: [
         {
@@ -42,29 +42,31 @@ const game = {
         }
       ]
     },
+  ],
+  genreLevels: [
     {
-      type: `Artist`,
+      type: `Genre`,
       title: `Выберите инди-рок треки`,
       answers: [
         {
           title: `answer-01`,
           isCorrect: false,
-          musicSrc: `#`
+          src: `#`
         },
         {
           title: `answer-02`,
           isCorrect: true,
-          musicSrc: `#`
+          src: `#`
         },
         {
           title: `answer-03`,
           isCorrect: false,
-          musicSrc: `#`
+          src: `#`
         },
         {
           title: `answer-04`,
           isCorrect: true,
-          musicSrc: `#`
+          src: `#`
         }
       ]
     },

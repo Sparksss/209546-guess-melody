@@ -3,22 +3,22 @@ import renderScreen from "../render-screen";
 import genreScreen from "./genre-module";
 import {game} from "./../data/models/game";
 
-const renderArtists = (data) => {
+const renderListOfArtists = (data) => {
   let listArtists = ``;
-  for (let i = 0; i < data.levels[1].answers.length; i++) {
+  for (let i = 0; i < data.answers.length; i++) {
     listArtists += `<div class="main-answer-wrapper">
           <input class="main-answer-r" type="radio" id="answer-1" name="answer" value="val-1"/>
           <label class="main-answer" for="answer-1">
             <img class="main-answer-preview" src="http://placehold.it/134x134"
-                 alt="${data.levels[1].answers[i].title}" width="134" height="134">
-            ${data.levels[1].answers[i].title}
+                 alt="${data.answers[i].title}" width="134" height="134">
+            ${data.answers[i].title}
           </label>
         </div>`;
   }
   return listArtists;
 };
 
-const renderListOfArtist = (data, renderArtist) => `<section class="main main--level main--level-artist">
+const artistsModule = (data) => `<section class="main main--level main--level-artist">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle
         cx="390" cy="390" r="370"
@@ -33,7 +33,7 @@ const renderListOfArtist = (data, renderArtist) => `<section class="main main--l
     </svg>
     <div class="main-mistakes"></div>
     <div class="main-wrap">
-      <h2 class="title main-title">${data.levels[1].title}</h2>
+      <h2 class="title main-title">${data.artistLevels[0].title}</h2>
       <div class="player-wrapper">
         <div class="player">
           <audio></audio>
@@ -43,11 +43,11 @@ const renderListOfArtist = (data, renderArtist) => `<section class="main main--l
           </div>
         </div>
       </div>
-      <form class="main-list">${renderArtist}</form>
+      <form class="main-list">${renderListOfArtists(game.artistLevels[1])}</form>
     </div>
   </section>`;
 
-const artistElement = createElement(renderListOfArtist(game, renderArtists(game)));
+const artistElement = createElement(artistsModule(game));
 
 
 const renderArtistScreen = () => {

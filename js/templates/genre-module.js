@@ -4,8 +4,29 @@ import successScreen from "./result-success-module";
 import timeOutScreen from "./time-out-module";
 import attemptsEndedScreen from "./attempts-ended-module";
 import getRandomResult from "./../getRandomResultModule";
+import {game} from "./../data/models/game";
 
-const genreElement = createElement`<section class="main main--level main--level-genre">
+const getTracks = (data) => {
+  let listOfTracks = ``;
+  for (let i = 0; i < data.answers.length; i++) {
+    listOfTracks += ` <div class="genre-answer">
+          <div class="player-wrapper">
+            <div class="player">
+              <audio src="${data.answers[i].src}"></audio>
+              <button class="player-control player-control--play"></button>
+              <div class="player-track">
+                <span class="player-status"></span>
+              </div>
+            </div>
+          </div>
+          <input type="checkbox" name="answer" value="answer-1" id="a-2">
+          <label class="genre-answer-check" for="a-2"></label>
+        </div>`;
+  }
+  return listOfTracks;
+};
+
+const genreModule = (data) => `<section class="main main--level main--level-genre">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle
         cx="390" cy="390" r="370"
@@ -25,71 +46,16 @@ const genreElement = createElement`<section class="main main--level main--level-
     </div>
 
     <div class="main-wrap">
-      <h2 class="title">Выберите инди-рок треки</h2>
+      <h2 class="title">${data.genreLevels[0].title}</h2>
       <form class="genre">
-        <div class="genre-answer">
-          <div class="player-wrapper">
-            <div class="player">
-              <audio></audio>
-              <button class="player-control player-control--pause"></button>
-              <div class="player-track">
-                <span class="player-status"></span>
-              </div>
-            </div>
-          </div>
-          <input type="checkbox" name="answer" value="answer" id="a-1">
-          <label class="genre-answer-check" for="a-1"></label>
-        </div>
-
-        <div class="genre-answer">
-          <div class="player-wrapper">
-            <div class="player">
-              <audio></audio>
-              <button class="player-control player-control--play"></button>
-              <div class="player-track">
-                <span class="player-status"></span>
-              </div>
-            </div>
-          </div>
-          <input type="checkbox" name="answer" value="answer-1" id="a-2">
-          <label class="genre-answer-check" for="a-2"></label>
-        </div>
-
-        <div class="genre-answer">
-          <div class="player-wrapper">
-            <div class="player">
-              <audio></audio>
-              <button class="player-control player-control--play"></button>
-              <div class="player-track">
-                <span class="player-status"></span>
-              </div>
-            </div>
-          </div>
-          <input type="checkbox" name="answer" value="answer-1" id="a-3">
-          <label class="genre-answer-check" for="a-3"></label>
-        </div>
-
-        <div class="genre-answer">
-          <div class="player-wrapper">
-            <div class="player">
-              <audio></audio>
-              <button class="player-control player-control--play"></button>
-              <div class="player-track">
-                <span class="player-status"></span>
-              </div>
-            </div>
-          </div>
-          <input type="checkbox" name="answer" value="answer-1" id="a-4">
-          <label class="genre-answer-check" for="a-4"></label>
-        </div>
-
+        ${getTracks(game.genreLevels[0])}
         <button class="genre-answer-send" type="submit" disabled>Ответить</button>
       </form>
     </div>
   </section>`;
 
 const renderGenre = () => {
-  renderScreen(genreElement);
+  renderScreen(createElement(genreModule(game)));
 };
 
 const resultScreens = [

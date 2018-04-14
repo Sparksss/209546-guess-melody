@@ -1,17 +1,18 @@
 import createElement from '../create-elem';
 import renderScreen from "../render-screen";
 import welcomeScreen from "./welcome-module";
+import {results} from "./../data/models/endGame";
 
-const attemptsEndedModule = createElement`<section class="main main--result">
-    <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
+const attemptsEndedModule = (data) => `<section class="main main--result">
+    <section class="logo" title="${data.title}"><h1>${data.title}</h1></section>
 
-    <h2 class="title">Какая жалость!</h2>
-    <div class="main-stat">У вас закончились все попытки.<br>Ничего, повезёт в следующий раз!</div>
-    <span role="button" tabindex="0" class="main-replay">Попробовать ещё раз</span>
+    <h2 class="title">${data.attempsEnded.title}</h2>
+    <div class="main-stat">${data.attempsEnded.endsOfAttempts}<br>${data.attempsEnded.lose}</div>
+    <span role="button" tabindex="0" class="main-replay">${data.playAgainLose}</span>
   </section>`;
 
 const renderAttemptsEnded = () => {
-  renderScreen(attemptsEndedModule);
+  renderScreen(createElement(attemptsEndedModule(results)));
 };
 
 document.addEventListener(`click`, (evt) => {
