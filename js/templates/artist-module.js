@@ -1,8 +1,24 @@
 import createElement from '../create-elem';
 import renderScreen from "../render-screen";
 import genreScreen from "./genre-module";
+import {game} from "./../data/models/game";
 
-const artistElement = createElement`<section class="main main--level main--level-artist">
+const renderArtists = (data) => {
+  let listArtists = ``;
+  for (let i = 0; i < data.levels[1].answers.length; i++) {
+    listArtists += `<div class="main-answer-wrapper">
+          <input class="main-answer-r" type="radio" id="answer-1" name="answer" value="val-1"/>
+          <label class="main-answer" for="answer-1">
+            <img class="main-answer-preview" src="http://placehold.it/134x134"
+                 alt="${data.levels[1].answers[i].title}" width="134" height="134">
+            ${data.levels[1].answers[i].title}
+          </label>
+        </div>`;
+  }
+  return listArtists;
+};
+
+const renderListOfArtist = (data, renderArtist) => `<section class="main main--level main--level-artist">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle
         cx="390" cy="390" r="370"
@@ -16,9 +32,8 @@ const artistElement = createElement`<section class="main main--level main--level
       </div>
     </svg>
     <div class="main-mistakes"></div>
-
     <div class="main-wrap">
-      <h2 class="title main-title">Кто исполняет эту песню?</h2>
+      <h2 class="title main-title">${data.levels[1].title}</h2>
       <div class="player-wrapper">
         <div class="player">
           <audio></audio>
@@ -28,29 +43,11 @@ const artistElement = createElement`<section class="main main--level main--level
           </div>
         </div>
       </div>
-      <form class="main-list">
-       
-
-        <div class="main-answer-wrapper">
-          <input class="main-answer-r" type="radio" id="answer-2" name="answer" value="val-2"/>
-          <label class="main-answer" for="answer-2">
-            <img class="main-answer-preview" src="http://placehold.it/134x134"
-                 alt="Краснознаменная дивизия имени моей бабушки" width="134" height="134">
-            Краснознаменная дивизия имени моей бабушки
-          </label>
-        </div>
-
-        <div class="main-answer-wrapper">
-          <input class="main-answer-r" type="radio" id="answer-3" name="answer" value="val-3"/>
-          <label class="main-answer" for="answer-3">
-            <img class="main-answer-preview" src="http://placehold.it/134x134"
-                 alt="Lorde" width="134" height="134">
-            Lorde
-          </label>
-        </div>
-      </form>
+      <form class="main-list">${renderArtist}</form>
     </div>
   </section>`;
+
+const artistElement = createElement(renderListOfArtist(game, renderArtists(game)));
 
 
 const renderArtistScreen = () => {

@@ -15,7 +15,7 @@ const welcomeElement = createElement`<section class="main main--welcome">
     </p>
   </section>`;
 
-const renderWelcomeScreen = () => {
+const welcomeScreen = () => {
   renderScreen(welcomeElement);
 };
 
@@ -27,5 +27,5 @@ document.addEventListener(`click`, (evt) => {
   }
 });
 
-export default renderWelcomeScreen;
+export default welcomeScreen;
 
