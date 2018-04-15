@@ -2,7 +2,6 @@ import createElement from '../create-elem';
 import renderScreen from "../render-screen";
 import genreScreen from "./genre-module";
 import {game} from "./../data/models/game";
-import {getNotes} from "./pieces/progressBar";
 
 const renderListOfArtists = (data) => {
   let listArtists = ``;
@@ -10,7 +9,7 @@ const renderListOfArtists = (data) => {
     listArtists += `<div class="main-answer-wrapper">
           <input class="main-answer-r" type="radio" id="answer-1" name="answer" value="val-1"/>
           <label class="main-answer" for="answer-1">
-            <img class="main-answer-preview" src="${data.answers[i].src}"
+            <img class="main-answer-preview" src="${data.answers[i].img}"
                  alt="${data.answers[i].title}" width="134" height="134">
             ${data.answers[i].title}
           </label>
@@ -69,6 +68,7 @@ const renderArtistScreen = () => {
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`main-answer-preview`)) {
     checkAnswer(evt.target.alt, game.artistLevels[0].answers);
+    genreScreen();
   }
 });
 

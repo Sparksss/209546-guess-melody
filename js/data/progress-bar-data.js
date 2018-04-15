@@ -1,8 +1,8 @@
-export const INITIAL_STATE = Object.freeze({
+export const INITIAL_STATE = {
   time: 300,
   notes: 3,
   answers: [],
-});
+};
 
 export const lostNote = (state) => state.notes - 1 > 0;
 

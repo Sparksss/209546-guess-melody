@@ -24,7 +24,6 @@ document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`main-play`)) {
     artistScreen();
     document.querySelector(`.main-mistakes`).appendChild(createElement(getNotes(INITIAL_STATE)));
-    document.querySelector(`.timer-value`).appendChild(createElement(getNotes(INITIAL_STATE)));
   }
 });
 
