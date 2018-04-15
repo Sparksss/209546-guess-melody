@@ -5,19 +5,19 @@ const game = {
       title: `Кто исполняет эту песню?`,
       answers: [
         {
-          title: `Пелагея`,
+          title: `Jingle Punks`,
           isCorrect: false,
-          img: `http://placehold.it/134x134`,
+          img: `https://i.vimeocdn.com/portrait/992615_300x300`,
         },
         {
-          title: `Краснознаменная дивизия имени моей бабушки`,
+          title: `Audionautix`,
           isCorrect: false,
-          img: `http://placehold.it/134x134`,
+          img: `http://4.bp.blogspot.com/-kft9qu5ET6U/VPFUBi9W-MI/AAAAAAAACYM/UxXilXKYwOc/s1600/audionautix%2BHalf%2BSize.jpg`,
         },
         {
-          title: `Lorde`,
+          title: `Gunnar Olsen`,
           isCorrect: true,
-          img: `http://placehold.it/134x134`,
+          img: `https://f4.bcbits.com/img/0004181452_10.jpg`,
         }
       ]
     },

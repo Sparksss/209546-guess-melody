@@ -2,6 +2,7 @@ import createElement from '../create-elem';
 import renderScreen from "../render-screen";
 import genreScreen from "./genre-module";
 import {game} from "./../data/models/game";
+import {getNotes} from "./pieces/progressBar";
 
 const renderListOfArtists = (data) => {
   let listArtists = ``;
@@ -9,7 +10,7 @@ const renderListOfArtists = (data) => {
     listArtists += `<div class="main-answer-wrapper">
           <input class="main-answer-r" type="radio" id="answer-1" name="answer" value="val-1"/>
           <label class="main-answer" for="answer-1">
-            <img class="main-answer-preview" src="http://placehold.it/134x134"
+            <img class="main-answer-preview" src="${data.answers[i].src}"
                  alt="${data.answers[i].title}" width="134" height="134">
             ${data.answers[i].title}
           </label>
@@ -36,18 +37,29 @@ const artistsModule = (data) => `<section class="main main--level main--level-ar
       <h2 class="title main-title">${data.artistLevels[0].title}</h2>
       <div class="player-wrapper">
         <div class="player">
-          <audio src="https://www.youtube.com/audiolibrary_download?vid=91624fdc22fc54ed" autoplay></audio>
+          <audio src="https://www.youtube.com/audiolibrary_download?vid=bcbe5be936a32fb1" autoplay></audio>
           <button class="player-control player-control--pause"></button>
           <div class="player-track">
             <span class="player-status"></span>
           </div>
         </div>
       </div>
-      <form class="main-list">${renderListOfArtists(game.artistLevels[1])}</form>
+      <form class="main-list">${renderListOfArtists(game.artistLevels[0])}</form>
     </div>
   </section>`;
 
 const artistElement = createElement(artistsModule(game));
+
+const checkAnswer = (currentAnswer, answers) => {
+  let isCorrect;
+  for (let i = 0; i < answers.length; i++) {
+    if (currentAnswer === answers[i].title) {
+      isCorrect = answers[i].isCorrect;
+      break;
+    }
+  }
+  return {notes: isCorrect};
+};
 
 
 const renderArtistScreen = () => {
@@ -56,7 +68,7 @@ const renderArtistScreen = () => {
 
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`main-answer-preview`)) {
-    genreScreen();
+    checkAnswer(evt.target.alt, game.artistLevels[0].answers);
   }
 });
 
