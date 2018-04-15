@@ -36,7 +36,7 @@ const artistsModule = (data) => `<section class="main main--level main--level-ar
       <h2 class="title main-title">${data.artistLevels[0].title}</h2>
       <div class="player-wrapper">
         <div class="player">
-          <audio></audio>
+          <audio src="https://www.youtube.com/audiolibrary_download?vid=91624fdc22fc54ed" autoplay></audio>
           <button class="player-control player-control--pause"></button>
           <div class="player-track">
             <span class="player-status"></span>
