@@ -36,7 +36,7 @@ const artistsModule = (data) => `<section class="main main--level main--level-ar
         <span class="timer-value-secs">00</span>
       </div>
     </svg>
-    <div class="main-mistakes"></div>
+    <div class="main-mistakes">${renderNotes(INITIAL_STATE)}</div>
     <div class="main-wrap">
       <h2 class="title main-title">${data.artistLevels[levels].title}</h2>
       <div class="player-wrapper">
@@ -72,16 +72,16 @@ const renderArtistScreen = () => {
 
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`main-answer-preview`)) {
-    let currentAnswer = checkAnswer(evt.target.alt, game.artistLevels[0].answers);
+    let currentAnswer = checkAnswer(evt.target.alt, game.artistLevels[levels].answers);
     INITIAL_STATE.answers.push(currentAnswer);
     if (!currentAnswer) {
       if (!lostNote(INITIAL_STATE)) {
         renderAttemptsEnded();
       }
-      let b = renderNotes(gameOver(INITIAL_STATE));
-      document.querySelector(`.main-mistakes`).innerHTML = b;
+      let notesElement = renderNotes(gameOver(INITIAL_STATE));
+      document.querySelector(`.main-mistakes`).innerHTML = notesElement;
     } else {
-      if (levels < game.artistLevels.length) {
+      if (levels < game.artistLevels.length - 1) {
         ++levels;
         renderScreen(createElement(artistsModule(game)));
       } else {

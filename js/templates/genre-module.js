@@ -5,6 +5,8 @@ import timeOutScreen from "./time-out-module";
 import attemptsEndedScreen from "./attempts-ended-module";
 import getRandomResult from "./../getRandomResultModule";
 import {game} from "./../data/models/game";
+import {renderNotes} from "./renderHeader";
+import {INITIAL_STATE} from "../data/progress-bar-data";
 
 const getTracks = (data) => {
   let listOfTracks = ``;
@@ -39,12 +41,7 @@ const genreModule = (data) => `<section class="main main--level main--level-genr
         <span class="timer-value-secs">00</span>
       </div>
     </svg>
-    <div class="main-mistakes">
-      <img class="main-mistake" src="img/wrong-answer.png" width="35" height="49">
-      <img class="main-mistake" src="img/wrong-answer.png" width="35" height="49">
-      <img class="main-mistake" src="img/wrong-answer.png" width="35" height="49">
-    </div>
-
+    <div class="main-mistakes">${renderNotes(INITIAL_STATE)}</div>
     <div class="main-wrap">
       <h2 class="title">${data.genreLevels[0].title}</h2>
       <form class="genre">
