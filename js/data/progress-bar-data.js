@@ -11,9 +11,7 @@ export const gameOver = (state) => {
     throw new Error(`Notes ended!`);
   }
 
-  const notes = state.notes--;
+  --state.notes;
 
-  return Object.assign({}, state, {
-    notes
-  });
+  return state;
 };

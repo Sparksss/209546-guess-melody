@@ -2,6 +2,11 @@ import createElement from '../create-elem';
 import renderScreen from "../render-screen";
 import genreScreen from "./genre-module";
 import {game} from "./../data/models/game";
+import {gameOver, INITIAL_STATE, lostNote} from "./../data/progress-bar-data";
+import {renderNotes} from "./renderHeader";
+import renderAttemptsEnded from "./attempts-ended-module";
+
+let levels = 0;
 
 const renderListOfArtists = (data) => {
   let listArtists = ``;
@@ -33,7 +38,7 @@ const artistsModule = (data) => `<section class="main main--level main--level-ar
     </svg>
     <div class="main-mistakes"></div>
     <div class="main-wrap">
-      <h2 class="title main-title">${data.artistLevels[0].title}</h2>
+      <h2 class="title main-title">${data.artistLevels[levels].title}</h2>
       <div class="player-wrapper">
         <div class="player">
           <audio src="https://www.youtube.com/audiolibrary_download?vid=bcbe5be936a32fb1" autoplay></audio>
@@ -43,7 +48,7 @@ const artistsModule = (data) => `<section class="main main--level main--level-ar
           </div>
         </div>
       </div>
-      <form class="main-list">${renderListOfArtists(game.artistLevels[0])}</form>
+      <form class="main-list">${renderListOfArtists(game.artistLevels[levels])}</form>
     </div>
   </section>`;
 
@@ -57,7 +62,7 @@ const checkAnswer = (currentAnswer, answers) => {
       break;
     }
   }
-  return {notes: isCorrect};
+  return isCorrect;
 };
 
 
@@ -67,9 +72,24 @@ const renderArtistScreen = () => {
 
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`main-answer-preview`)) {
-    checkAnswer(evt.target.alt, game.artistLevels[0].answers);
-    genreScreen();
+    let currentAnswer = checkAnswer(evt.target.alt, game.artistLevels[0].answers);
+    INITIAL_STATE.answers.push(currentAnswer);
+    if (!currentAnswer) {
+      if (!lostNote(INITIAL_STATE)) {
+        renderAttemptsEnded();
+      }
+      let b = renderNotes(gameOver(INITIAL_STATE));
+      document.querySelector(`.main-mistakes`).innerHTML = b;
+    } else {
+      if (levels < game.artistLevels.length) {
+        ++levels;
+        renderScreen(createElement(artistsModule(game)));
+      } else {
+        genreScreen();
+      }
+    }
   }
 });
+
 
 export default renderArtistScreen;
