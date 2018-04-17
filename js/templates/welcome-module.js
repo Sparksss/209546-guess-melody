@@ -1,8 +1,6 @@
 import createElement from "../create-elem";
 import renderScreen from "../render-screen";
 import artistScreen from "./artist-module";
-import {getNotes} from "./pieces/progressBar";
-import {INITIAL_STATE} from "../data/progress-bar-data";
 import {startGame} from "./../data/models/startGame";
 
 const getWelcomeElement = (data) => `<section class="main main--welcome">

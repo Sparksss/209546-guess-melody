@@ -22,7 +22,7 @@ const getTracks = (data) => {
             </div>
           </div>
           <input type="checkbox" name="answer" value="answer-1" id="a-2">
-          <label class="genre-answer-check" for="a-2"></label>
+          <label class="genre-answer-check" for="${data.answers[i].title}"></label>
         </div>`;
   }
   return listOfTracks;

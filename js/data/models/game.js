@@ -49,22 +49,22 @@ const game = {
       title: `Выберите инди-рок треки`,
       answers: [
         {
-          title: `answer-01`,
+          title: `a-1`,
           isCorrect: false,
           src: `#`
         },
         {
-          title: `answer-02`,
+          title: `a-2`,
           isCorrect: true,
           src: `#`
         },
         {
-          title: `answer-03`,
+          title: `a-3`,
           isCorrect: false,
           src: `#`
         },
         {
-          title: `answer-04`,
+          title: `a-4`,
           isCorrect: true,
           src: `#`
         }
