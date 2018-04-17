@@ -1,5 +1,4 @@
-import createElement from "../create-elem";
-import renderScreen from "../render-screen";
+import {createElement, renderTemplate} from "./../utils";
 import artistScreen from "./artist-module";
 import {startGame} from "./../data/models/startGame";
 
@@ -15,7 +14,7 @@ const getWelcomeElement = (data) => `<section class="main main--welcome">
   </section>`;
 
 const welcomeScreen = () => {
-  renderScreen(createElement(getWelcomeElement(startGame)));
+  renderTemplate(createElement(getWelcomeElement(startGame)));
 };
 
 document.addEventListener(`click`, (evt) => {

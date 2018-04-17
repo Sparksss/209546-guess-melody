@@ -1,5 +1,4 @@
-import createElement from '../create-elem';
-import renderScreen from "../render-screen";
+import {createElement, renderTemplate} from "./../utils";
 import welcomeScreen from "./welcome-module";
 import {results} from "./../data/models/endGame";
 
@@ -16,7 +15,7 @@ const resultSuccessModule = (data) => `<section class="main main--result">
 
 
 const renderResultSucces = () => {
-  renderScreen(createElement(resultSuccessModule(results)));
+  renderTemplate(createElement(resultSuccessModule(results)));
 };
 
 

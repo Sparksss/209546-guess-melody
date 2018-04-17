@@ -1,5 +1,4 @@
-import createElement from '../create-elem';
-import renderScreen from "../render-screen";
+import {createElement, renderTemplate} from "./../utils";
 import welcomeScreen from "./welcome-module";
 import {results} from "./../data/models/endGame";
 
@@ -13,7 +12,7 @@ const timeOut = (data) => `<section class="main main--result">
 
 
 const renderTimeOut = () => {
-  renderScreen(createElement(timeOut(results)));
+  renderTemplate(createElement(timeOut(results)));
 };
 
 document.addEventListener(`click`, (evt) => {

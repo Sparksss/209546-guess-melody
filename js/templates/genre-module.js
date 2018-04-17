@@ -1,11 +1,10 @@
-import createElement from "../create-elem";
-import renderScreen from "../render-screen";
+import {createElement, renderTemplate} from "./../utils";
 import successScreen from "./result-success-module";
 import timeOutScreen from "./time-out-module";
 import attemptsEndedScreen from "./attempts-ended-module";
 import getRandomResult from "./../getRandomResultModule";
 import {game} from "./../data/models/game";
-import {renderNotes} from "./renderHeader";
+import countNotes from "./renderHeader";
 import {INITIAL_STATE} from "../data/progress-bar-data";
 
 const getTracks = (data) => {
@@ -41,7 +40,7 @@ const genreModule = (data) => `<section class="main main--level main--level-genr
         <span class="timer-value-secs">00</span>
       </div>
     </svg>
-    <div class="main-mistakes">${renderNotes(INITIAL_STATE)}</div>
+    <div class="main-mistakes">${countNotes(INITIAL_STATE)}</div>
     <div class="main-wrap">
       <h2 class="title">${data.genreLevels[0].title}</h2>
       <form class="genre">
@@ -52,7 +51,7 @@ const genreModule = (data) => `<section class="main main--level main--level-genr
   </section>`;
 
 const renderGenre = () => {
-  renderScreen(createElement(genreModule(game)));
+  renderTemplate(createElement(genreModule(game)));
 };
 
 const resultScreens = [

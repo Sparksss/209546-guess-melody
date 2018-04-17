@@ -1,9 +1,8 @@
-import createElement from '../create-elem';
-import renderScreen from "../render-screen";
+import {createElement, renderTemplate} from "./../utils";
 import genreScreen from "./genre-module";
 import {game} from "./../data/models/game";
 import {gameOver, INITIAL_STATE, lostNote} from "./../data/progress-bar-data";
-import {renderNotes} from "./renderHeader";
+import countNotes from "./renderHeader";
 import renderAttemptsEnded from "./attempts-ended-module";
 
 let levels = 0;
@@ -36,7 +35,7 @@ const artistsModule = (data) => `<section class="main main--level main--level-ar
         <span class="timer-value-secs">00</span>
       </div>
     </svg>
-    <div class="main-mistakes">${renderNotes(INITIAL_STATE)}</div>
+    <div class="main-mistakes">${countNotes(INITIAL_STATE)}</div>
     <div class="main-wrap">
       <h2 class="title main-title">${data.artistLevels[levels].title}</h2>
       <div class="player-wrapper">
@@ -67,7 +66,7 @@ const checkAnswer = (currentAnswer, answers) => {
 
 
 const renderArtistScreen = () => {
-  renderScreen(artistElement);
+  renderTemplate(artistElement);
 };
 
 document.addEventListener(`click`, (evt) => {
@@ -78,18 +77,16 @@ document.addEventListener(`click`, (evt) => {
       if (!lostNote(INITIAL_STATE)) {
         renderAttemptsEnded();
       }
-      let notesElement = renderNotes(gameOver(INITIAL_STATE));
-      document.querySelector(`.main-mistakes`).innerHTML = notesElement;
+      document.querySelector(`.main-mistakes`).innerHTML = countNotes(gameOver(INITIAL_STATE));
     } else {
       if (levels < game.artistLevels.length - 1) {
         ++levels;
-        renderScreen(createElement(artistsModule(game)));
+        renderTemplate(createElement(artistsModule(game)));
       } else {
         genreScreen();
       }
     }
   }
 });
-
 
 export default renderArtistScreen;

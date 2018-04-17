@@ -1,5 +1,4 @@
-import createElement from '../create-elem';
-import renderScreen from "../render-screen";
+import {createElement, renderTemplate} from "../utils";
 import welcomeScreen from "./welcome-module";
 import {results} from "./../data/models/endGame";
 
@@ -12,7 +11,7 @@ const attemptsEndedModule = (data) => `<section class="main main--result">
   </section>`;
 
 const renderAttemptsEnded = () => {
-  renderScreen(createElement(attemptsEndedModule(results)));
+  renderTemplate(createElement(attemptsEndedModule(results)));
 };
 
 document.addEventListener(`click`, (evt) => {
