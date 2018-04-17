@@ -6,7 +6,7 @@ const game = {
       answers: [
         {
           title: `Jingle Punks`,
-          isCorrect: false,
+          isCorrect: true,
           img: `https://i.vimeocdn.com/portrait/992615_300x300`,
         },
         {
@@ -16,7 +16,7 @@ const game = {
         },
         {
           title: `Gunnar Olsen`,
-          isCorrect: true,
+          isCorrect: false,
           img: `https://f4.bcbits.com/img/0004181452_10.jpg`,
         }
       ]
@@ -26,17 +26,164 @@ const game = {
       title: `Кто исполняет эту песню?`,
       answers: [
         {
-          title: `Hammer Fall`,
+          title: `Zemfira`,
           isCorrect: false,
           img: `http://placehold.it/134x134`,
         },
         {
           title: `Beatles`,
-          isCorrect: true,
+          isCorrect: false,
           img: `http://placehold.it/134x134`,
         },
         {
           title: `DDT`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `Сплин`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Наутилус помпилус`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Кино`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `Алиса`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Краснознамённая дивизия имени моей бабушки`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Пошлая Молли`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `Stone sour`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Slipknot`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Ария`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `Zemfira`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Ночные снайперы`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Алиса`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `БИ-2`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Смысловые галлюцинации`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Серж горелый`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `Ночные снайперы`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Кукрыниксы`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Кипелов`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `Пикник`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Машина времени`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Браво`,
           isCorrect: false,
           img: `http://placehold.it/134x134`,
         }
