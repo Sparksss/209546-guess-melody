@@ -21,7 +21,7 @@ const game = {
         }
       ]
     },
-    {
+  /*  {
       type: `Artist`,
       title: `Кто исполняет эту песню?`,
       answers: [
@@ -188,7 +188,7 @@ const game = {
           img: `http://placehold.it/134x134`,
         }
       ]
-    },
+    },*/
   ],
   genreLevels: [
     {

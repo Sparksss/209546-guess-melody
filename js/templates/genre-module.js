@@ -1,11 +1,9 @@
 import {createElement, renderTemplate} from "./../utils";
 import successScreen from "./result-success-module";
-import timeOutScreen from "./time-out-module";
-import attemptsEndedScreen from "./attempts-ended-module";
-import getRandomResult from "./../getRandomResultModule";
+import renderAttemptsEnded from "./attempts-ended-module";
 import {game} from "./../data/models/game";
 import countNotes from "./renderHeader";
-import {INITIAL_STATE} from "../data/progress-bar-data";
+import {gameOver, INITIAL_STATE, lostNote} from "../data/progress-bar-data";
 
 const getTracks = (data) => {
   let listOfTracks = ``;
@@ -26,6 +24,8 @@ const getTracks = (data) => {
   }
   return listOfTracks;
 };
+
+const countAnswers = [];
 
 const genreModule = (data) => `<section class="main main--level main--level-genre">
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
@@ -54,20 +54,41 @@ const renderGenre = () => {
   renderTemplate(createElement(genreModule(game)));
 };
 
-const resultScreens = [
-  successScreen,
-  timeOutScreen,
-  attemptsEndedScreen
-];
+const checkAnswer = (currentAnswer, answers) => {
+  let isCorrect;
+  for (let i = 0; i < answers.length; i++) {
+    if (currentAnswer === answers[i].title) {
+      isCorrect = answers[i].isCorrect;
+      break;
+    }
+  }
+  return isCorrect;
+};
 
+const addAnswer = (answer) => {
+  return countAnswers.push(answer);
+};
+
+const isCorrectAnswers = (answers) => answers.every((answer) => {
+  return answer === true;
+});
 
 document.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`genre-answer-check`)) {
     evt.preventDefault();
+    addAnswer(checkAnswer(event.target.htmlFor, game.genreLevels[0].answers));
     document.querySelector(`.genre-answer-send`).disabled = false;
   } else if (evt.target.classList.contains(`genre-answer-send`)) {
     evt.preventDefault();
-    resultScreens[getRandomResult()]();
+    if (!isCorrectAnswers(countAnswers)) {
+      if (!lostNote(INITIAL_STATE)) {
+        renderAttemptsEnded();
+      }
+      document.querySelector(`.main-mistakes`).innerHTML = countNotes(gameOver(INITIAL_STATE));
+    } else {
+      INITIAL_STATE.answers.concat(countAnswers);
+      successScreen();
+    }
   }
 });
 
