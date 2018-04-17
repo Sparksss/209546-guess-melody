@@ -12,4 +12,15 @@ const renderTemplate = (screenTemplate) => {
   mainScreen.appendChild(screenTemplate.cloneNode(true));
 };
 
-export {createElement, renderTemplate};
+const checkAnswer = (currentAnswer, answers) => {
+  let isCorrect;
+  for (let i = 0; i < answers.length; i++) {
+    if (currentAnswer === answers[i].title) {
+      isCorrect = answers[i].isCorrect;
+      break;
+    }
+  }
+  return isCorrect;
+};
+
+export {createElement, renderTemplate, checkAnswer};

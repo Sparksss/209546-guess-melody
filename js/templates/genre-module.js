@@ -1,4 +1,4 @@
-import {createElement, renderTemplate} from "./../utils";
+import {createElement, renderTemplate, checkAnswer} from "./../utils";
 import successScreen from "./result-success-module";
 import renderAttemptsEnded from "./attempts-ended-module";
 import {game} from "./../data/models/game";
@@ -52,17 +52,6 @@ const genreModule = (data) => `<section class="main main--level main--level-genr
 
 const renderGenre = () => {
   renderTemplate(createElement(genreModule(game)));
-};
-
-const checkAnswer = (currentAnswer, answers) => {
-  let isCorrect;
-  for (let i = 0; i < answers.length; i++) {
-    if (currentAnswer === answers[i].title) {
-      isCorrect = answers[i].isCorrect;
-      break;
-    }
-  }
-  return isCorrect;
 };
 
 const addAnswer = (answer) => {

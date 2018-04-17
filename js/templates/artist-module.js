@@ -1,4 +1,4 @@
-import {createElement, renderTemplate} from "./../utils";
+import {createElement, renderTemplate, checkAnswer} from "./../utils";
 import genreScreen from "./genre-module";
 import {game} from "./../data/models/game";
 import {gameOver, INITIAL_STATE, lostNote} from "./../data/progress-bar-data";
@@ -52,18 +52,6 @@ const artistsModule = (data) => `<section class="main main--level main--level-ar
   </section>`;
 
 const artistElement = createElement(artistsModule(game));
-
-const checkAnswer = (currentAnswer, answers) => {
-  let isCorrect;
-  for (let i = 0; i < answers.length; i++) {
-    if (currentAnswer === answers[i].title) {
-      isCorrect = answers[i].isCorrect;
-      break;
-    }
-  }
-  return isCorrect;
-};
-
 
 const renderArtistScreen = () => {
   renderTemplate(artistElement);
