@@ -4,9 +4,8 @@ import {results} from "./../data/models/endGame";
 
 const timeOut = (data) => `<section class="main main--result">
     <section class="logo" title="${data.title}"><h1>${data.title}</h1></section>
-
     <h2 class="title">${data.timeOut.title}</h2>
-    <div class="main-stat">${data.timeOut.endsOfTime}<br>${data.timeOut.lose}</div>
+    <div class="main-stat">${data.timeOut.endsOfTime}</div>
     <span role="button" tabindex="0" class="main-replay">${data.playAgainLose}</span>
   </section>`;
 

@@ -6,7 +6,7 @@ const attemptsEndedModule = (data) => `<section class="main main--result">
     <section class="logo" title="${data.title}"><h1>${data.title}</h1></section>
 
     <h2 class="title">${data.attempsEnded.title}</h2>
-    <div class="main-stat">${data.attempsEnded.endsOfAttempts}<br>${data.attempsEnded.lose}</div>
+    <div class="main-stat">${data.attempsEnded.endsOfAttempts}</div>
     <span role="button" tabindex="0" class="main-replay">${data.playAgainLose}</span>
   </section>`;
 
