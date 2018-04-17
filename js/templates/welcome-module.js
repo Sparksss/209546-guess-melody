@@ -1,20 +1,20 @@
-import createElement from "../create-elem";
-import renderScreen from "../render-screen";
+import {createElement, renderTemplate} from "./../utils";
 import artistScreen from "./artist-module";
+import {startGame} from "./../data/models/startGame";
 
-const welcomeElement = createElement`<section class="main main--welcome">
-    <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
-    <button class="main-play">Начать игру</button>
-    <h2 class="title main-title">Правила игры</h2>
+const getWelcomeElement = (data) => `<section class="main main--welcome">
+    <section class="logo" title="${data.title}"><h1>${data.title}</h1></section>
+    <button class="main-play">${data.start}</button>
+    <h2 class="title main-title">${data.rules.title}</h2>
     <p class="text main-text">
-      Правила просты&nbsp;— за&nbsp;5 минут ответить на все вопросы.<br>
-      Ошибиться можно 3 раза.<br>
-      Удачи!
+      ${data.rules.description}<br>
+      ${data.rules.warnings}<br>
+      ${data.rules.inf}
     </p>
   </section>`;
 
-const renderWelcomeScreen = () => {
-  renderScreen(welcomeElement);
+const welcomeScreen = () => {
+  renderTemplate(createElement(getWelcomeElement(startGame)));
 };
 
 document.addEventListener(`click`, (evt) => {
@@ -23,5 +23,5 @@ document.addEventListener(`click`, (evt) => {
   }
 });
 
-export default renderWelcomeScreen;
+export default welcomeScreen;
 

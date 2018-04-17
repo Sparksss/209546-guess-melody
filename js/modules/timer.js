@@ -1,19 +1,14 @@
 const createTimeLimit = (time) => {
-  if (time) {
-    return {
-      timeLimit: time,
-      endOfTime: ``,
-      tick() {
-        if (this.timeLimit > 0) {
-          --this.timeLimit;
-        } else {
-          this.endOfTime = `time is over!`;
-        }
+  return {
+    timeLimit: time,
+    tick() {
+      --this.timeLimit;
+      if (this.timeLimit <= 0) {
+        this.timeLimit = `time is over!`;
       }
-    };
-  } else {
-    return -1;
-  }
+      return this.timeLimit;
+    }
+  };
 };
 
 export default createTimeLimit;

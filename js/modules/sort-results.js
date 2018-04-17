@@ -17,7 +17,9 @@ const sortGameResults = (statistics, {points, notes, time} = {}) => {
 
   return {
     playerPosition,
-    quantityPoints
+    quantityPoints,
+    time,
+    notes
   };
 };
 
@@ -25,8 +27,14 @@ const renderStringResult = (results) => {
   if (Object.keys(results).length === 0) {
     return -1;
   }
-  const {playerPosition, quantityPoints} = results;
-  return `Вы заняли ${playerPosition} место из ${quantityPoints} игроков. Это лучше, чем у ${playerPosition / quantityPoints * 10}% игроков`;
+  const {playerPosition, quantityPoints, time, notes} = results;
+  let message = `Вы заняли ${playerPosition} место из ${quantityPoints} игроков. Это лучше, чем у ${playerPosition / quantityPoints * 10}% игроков`;
+  if (!time === 0) {
+    message = `Время вышло! Вы не успели отгадать все мелодии!`;
+  } else if (!notes) {
+    message = `У вас закончились все попытки. Ничего, повезёт в следующий раз!`;
+  }
+  return message;
 };
 
 export {sortGameResults, renderStringResult};
