@@ -8,7 +8,7 @@ const mainScreen = document.querySelector(`.main`);
 
 const renderTemplate = (screenTemplate) => {
   mainScreen.innerHTML = ``;
-  mainScreen.appendChild(screenTemplate.cloneNode(true));
+  mainScreen.appendChild(screenTemplate);
 };
 
 const checkAnswer = (currentAnswer, answers) => {
