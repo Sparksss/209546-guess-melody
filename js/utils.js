@@ -4,7 +4,6 @@ const createElement = (str) => {
   return parser.content;
 };
 
-
 const mainScreen = document.querySelector(`.main`);
 
 const renderTemplate = (screenTemplate) => {

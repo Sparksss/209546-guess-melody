@@ -1,5 +1,5 @@
 import {createElement, renderTemplate} from "../utils";
-import welcomeScreen from "./welcome-module";
+import welcomeScreen from "./welcomeView";
 import {results} from "./../data/models/endGame";
 
 const attemptsEndedModule = (data) => `<section class="main main--result">

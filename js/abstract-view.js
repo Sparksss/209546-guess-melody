@@ -1,3 +1,5 @@
+import {createElement} from "./utils";
+
 class AbstractView {
   constructor() {
     if (new.target === AbstractView) {
@@ -9,16 +11,6 @@ class AbstractView {
     throw new Error(`Template is required`);
   }
 
-  render() {
-    const parser = document.createElement(`template`);
-    parser.innerHTML = this.template;
-    return parser.content;
-  }
-
-  bind() {
-    throw new Error(`Method add handlers is required`);
-  }
-
   get element() {
     if (this._element) {
       return this._element;
@@ -26,6 +18,14 @@ class AbstractView {
     this._element = this.render();
     this.bind(this._element);
     return this._element;
+  }
+
+  render() {
+    return createElement(this.template);
+  }
+
+  bind() {
+    throw new Error(`Method add handlers is required`);
   }
 }
 
