@@ -1,12 +1,16 @@
-import WelcomeView from "./templates/welcomeView";
-import {startGame} from "./data/models/startGame";
-import artistScreen from "./templates/artist-module";
-import {renderTemplate} from "./utils";
+import renderWelcome from "./templates/welcome-screen";
+import renderArtist from "./templates/artist-screen";
 
-const previewView = new WelcomeView(startGame);
 
-renderTemplate(previewView.element);
+renderWelcome();
 
-previewView.playGame = () => {
-  artistScreen();
-};
+// const previewView = new WelcomeView(startGame);
+
+
+// renderTemplate(previewView.element);
+
+// previewView.playGame = () => {
+//   renderTemplate(artistView.element);
+// };
+
+
