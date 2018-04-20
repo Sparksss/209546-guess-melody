@@ -3,7 +3,7 @@ import {checkAnswer, renderTemplate} from "./../utils";
 import {gameOver, INITIAL_STATE, lostNote} from "./../data/progress-bar-data";
 import renderGenre from "./genre-screen";
 import ArtistView from "./view/artistView";
-import renderAttemptsEnded from "./view/attemptsEndedView";
+import renderAttemptsEnded from "./attempts-ended-screen";
 import countNotes from "./renderHeader";
 
 
