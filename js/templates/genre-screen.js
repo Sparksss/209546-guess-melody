@@ -1,9 +1,9 @@
 import {renderTemplate, checkAnswer} from "./../utils";
-import successScreen from "./view/result-success-module";
+import renderSuccess from "./succes-module";
 import renderAttemptsEnded from "./attempts-ended-screen";
 import {game} from "./../data/models/game";
 import countNotes from "./renderHeader";
-import {gameOver, INITIAL_STATE, lostNote} from "../data/progress-bar-data";
+import {gameOver, INITIAL_STATE, lostNote} from "./../data/progress-bar-data";
 import GenreView from "./view/genreView";
 
 
@@ -33,7 +33,7 @@ const renderGenre = () => {
         document.querySelector(`.main-mistakes`).innerHTML = countNotes(gameOver(INITIAL_STATE));
       } else {
         INITIAL_STATE.answers.concat(countAnswers);
-        successScreen();
+        renderSuccess();
       }
     }
   };
