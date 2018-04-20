@@ -15,7 +15,7 @@ const renderArtist = () => {
   artistView.changeView = (evt) => {
     if (evt.target.classList.contains(`main-answer-preview`)) {
       let currentAnswer = checkAnswer(evt.target.alt, game.artistLevels[levels].answers);
-      INITIAL_STATE.answers.push(currentAnswer);
+      INITIAL_STATE.answers.push({answer: currentAnswer, timeLimit: 32});
       if (!currentAnswer) {
         if (!lostNote(INITIAL_STATE)) {
           renderAttemptsEnded();
