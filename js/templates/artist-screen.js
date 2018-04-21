@@ -1,9 +1,9 @@
 import {game} from "./../data/models/game";
 import {checkAnswer, renderTemplate} from "./../utils";
 import {lostNote, gameOver} from "./../data/models/initialization-state";
-import ArtistView from "./../view/artistView";
+import ArtistView from "../view/artist-view";
 import renderAttemptsEnded from "./attempts-ended-screen";
-import changeView from "./../changeState";
+import changeView from "../change-state";
 
 
 const renderArtist = (state) => {
