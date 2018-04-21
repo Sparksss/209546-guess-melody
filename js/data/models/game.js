@@ -1,5 +1,5 @@
 const game = {
-  artistLevels: [
+  levels: [
     {
       type: `Artist`,
       title: `Кто исполняет эту песню?`,
@@ -21,27 +21,27 @@ const game = {
         }
       ]
     },
-    // {
-    //   type: `Artist`,
-    //   title: `Кто исполняет эту песню?`,
-    //   answers: [
-    //     {
-    //       title: `Zemfira`,
-    //       isCorrect: false,
-    //       img: `http://placehold.it/134x134`,
-    //     },
-    //     {
-    //       title: `Beatles`,
-    //       isCorrect: false,
-    //       img: `http://placehold.it/134x134`,
-    //     },
-    //     {
-    //       title: `DDT`,
-    //       isCorrect: true,
-    //       img: `http://placehold.it/134x134`,
-    //     }
-    //   ]
-    // },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `Zemfira`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Beatles`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `DDT`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
     // {
     //   type: `Artist`,
     //   title: `Кто исполняет эту песню?`,
@@ -189,8 +189,6 @@ const game = {
     //     }
     //   ]
     // },
-  ],
-  genreLevels: [
     {
       type: `Genre`,
       title: `Выберите инди-рок треки`,

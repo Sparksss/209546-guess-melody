@@ -1,16 +1,13 @@
 import {renderTemplate, checkAnswer} from "./../utils";
-import renderSuccess from "./succes-module";
 import renderAttemptsEnded from "./attempts-ended-screen";
 import {game} from "./../data/models/game";
-import countNotes from "./renderHeader";
-import {gameOver, INITIAL_STATE, lostNote} from "./../data/progress-bar-data";
+import {lostNote, gameOver} from "./../data/models/initialization-state";
 import GenreView from "./view/genreView";
+import changeView from "../changeState";
 
-
-const renderGenre = () => {
+const renderGenre = (state) => {
   const countAnswers = [];
-  const genreView = new GenreView(game, INITIAL_STATE);
-
+  const genreView = new GenreView(game, state.level);
   const addAnswer = (answer) => {
     return countAnswers.push(answer);
   };
@@ -22,19 +19,20 @@ const renderGenre = () => {
   genreView.changeScreen = (evt) => {
     if (evt.target.classList.contains(`genre-answer-check`)) {
       evt.preventDefault();
-      addAnswer(checkAnswer(event.target.htmlFor, game.genreLevels[0].answers));
+      addAnswer(checkAnswer(evt.target.htmlFor, game.levels[state.level].answers));
       document.querySelector(`.genre-answer-send`).disabled = false;
     } else if (evt.target.classList.contains(`genre-answer-send`)) {
       evt.preventDefault();
-      if (!isCorrectAnswers(countAnswers)) {
-        if (!lostNote(INITIAL_STATE)) {
+      const isCorrectAnswer = isCorrectAnswers(countAnswers);
+      if (!isCorrectAnswer) {
+        if (!lostNote(state)) {
           renderAttemptsEnded();
         }
-        document.querySelector(`.main-mistakes`).innerHTML = countNotes(gameOver(INITIAL_STATE));
-      } else {
-        INITIAL_STATE.answers.concat(countAnswers);
-        renderSuccess();
+        gameOver(state);
       }
+      state.answers.push({answer: isCorrectAnswer, timeLimit: 32});
+      ++state.level;
+      changeView(state);
     }
   };
   renderTemplate(genreView.element);
