@@ -1,8 +1,7 @@
+import AbstractView from "./../abstract-view";
 
-import AbstractView from "./../../abstract-view";
 
-
-class TimeOutView extends AbstractView {
+class AttemptsEnded extends AbstractView {
   constructor(data) {
     super();
     this.data = data;
@@ -11,8 +10,8 @@ class TimeOutView extends AbstractView {
   get template() {
     return `<section class="main main--result">
     <section class="logo" title="${this.data.title}"><h1>${this.data.title}</h1></section>
-    <h2 class="title">${this.data.timeOut.title}</h2>
-    <div class="main-stat">${this.data.timeOut.endsOfTime}</div>
+    <h2 class="title">${this.data.attempsEnded.title}</h2>
+    <div class="main-stat">${this.data.attempsEnded.endsOfAttempts}</div>
     <span role="button" tabindex="0" class="main-replay">${this.data.playAgainLose}</span>
   </section>`;
   }
@@ -27,4 +26,4 @@ class TimeOutView extends AbstractView {
   }
 }
 
-export default TimeOutView;
+export default AttemptsEnded;

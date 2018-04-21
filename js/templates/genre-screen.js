@@ -1,9 +1,9 @@
+import changeView from "./../changeState";
 import {renderTemplate, checkAnswer} from "./../utils";
 import renderAttemptsEnded from "./attempts-ended-screen";
 import {game} from "./../data/models/game";
 import {lostNote, gameOver} from "./../data/models/initialization-state";
-import GenreView from "./view/genreView";
-import changeView from "../changeState";
+import GenreView from "./../view/genreView";
 
 const renderGenre = (state) => {
   const countAnswers = [];

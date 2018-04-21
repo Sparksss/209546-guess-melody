@@ -1,4 +1,4 @@
-import GetStateGame from "./view/stateGameView";
+import GetStateGame from "./../view/stateGameView";
 import {initializationState} from "./../data/models/initialization-state";
 import {renderTemplate} from "./../utils";
 

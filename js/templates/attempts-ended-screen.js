@@ -1,7 +1,7 @@
 import {renderTemplate} from "./../utils";
 import welcomeScreen from "./welcome-screen";
 import {results} from "./../data/models/endGame";
-import AttemptsEnded from "./view/attemptsEndedView";
+import AttemptsEnded from "./../view/attemptsEndedView";
 
 const renderAttemptsEnded = () => {
   const attemptsEnded = new AttemptsEnded(results);
