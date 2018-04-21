@@ -8,16 +8,19 @@ const game = {
           title: `Jingle Punks`,
           isCorrect: true,
           img: `https://i.vimeocdn.com/portrait/992615_300x300`,
+          src: `https://www.youtube.com/audiolibrary_download?vid=bcbe5be936a32fb1`
         },
         {
           title: `Audionautix`,
           isCorrect: false,
           img: `http://4.bp.blogspot.com/-kft9qu5ET6U/VPFUBi9W-MI/AAAAAAAACYM/UxXilXKYwOc/s1600/audionautix%2BHalf%2BSize.jpg`,
+          src: `https://www.youtube.com/audiolibrary_download?vid=a127d9b7de8a17cf`
         },
         {
           title: `Gunnar Olsen`,
           isCorrect: false,
           img: `https://f4.bcbits.com/img/0004181452_10.jpg`,
+          src: `https://www.youtube.com/audiolibrary_download?vid=bcbe5be936a32fb1`
         }
       ]
     },
@@ -29,16 +32,19 @@ const game = {
           title: `Zemfira`,
           isCorrect: false,
           img: `http://placehold.it/134x134`,
+          src: ``
         },
         {
           title: `Beatles`,
           isCorrect: false,
           img: `http://placehold.it/134x134`,
+          src: ``
         },
         {
           title: `DDT`,
           isCorrect: true,
           img: `http://placehold.it/134x134`,
+          src: ``
         }
       ]
     },
