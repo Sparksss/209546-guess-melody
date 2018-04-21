@@ -1,5 +1,4 @@
-import config from "./../config";
-
+import config from "./../../lib/config";
 
 const initializationState = () => {
   return Object.assign({}, config);
