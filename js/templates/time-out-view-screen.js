@@ -1,5 +1,5 @@
 import {renderTemplate} from "./../utils";
-import welcomeScreen from "./welcome-screen";
+import welcomeScreen from "./welcome-view-screen";
 import {results} from "./../data/models/endGame";
 import TimeOutView from "../view/time-out-view";
 

@@ -1,3 +1,3 @@
-import renderWelcome from "./templates/welcome-screen";
+import renderWelcome from "./templates/welcome-view-screen";
 
 renderWelcome();

@@ -1,7 +1,7 @@
-import renderArtist from "./templates/artist-screen";
-import renderGenre from "./templates/genre-screen";
-import renderState from "./templates/change-state-game";
-import renderSuccess from "./templates/succes-module";
+import renderArtist from "./templates/artist-view-screen";
+import renderGenre from "./templates/genre-view-screen";
+import renderState from "./templates/change-state-game-view-screen";
+import renderSuccess from "./templates/succes-view-screen";
 import {game} from "./data/models/game";
 
 const changeView = (state) => {
