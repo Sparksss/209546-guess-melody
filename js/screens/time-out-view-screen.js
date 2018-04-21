@@ -1,10 +1,9 @@
 import {renderTemplate} from "./../utils";
 import welcomeScreen from "./welcome-view-screen";
-import {results} from "./../data/models/endGame";
 import TimeOutView from "../view/time-out-view";
 
 
-const timeOutView = new TimeOutView(results);
+const timeOutView = new TimeOutView();
 renderTemplate(timeOutView.element);
 
 timeOutView.restartGame = (evt) => {

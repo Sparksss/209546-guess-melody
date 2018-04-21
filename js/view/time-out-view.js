@@ -2,17 +2,16 @@ import AbstractView from "./../abstract-view";
 
 
 class TimeOutView extends AbstractView {
-  constructor(data) {
+  constructor() {
     super();
-    this.data = data;
   }
 
   get template() {
     return `<section class="main main--result">
-    <section class="logo" title="${this.data.title}"><h1>${this.data.title}</h1></section>
-    <h2 class="title">${this.data.timeOut.title}</h2>
-    <div class="main-stat">${this.data.timeOut.endsOfTime}</div>
-    <span role="button" tabindex="0" class="main-replay">${this.data.playAgainLose}</span>
+    <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
+    <h2 class="title">Увы и ах!</h2>
+    <div class="main-stat">Время вышло!<br>Вы не успели отгадать все мелодии</div>
+    <span role="button" tabindex="0" class="main-replay">Попробовать ещё раз</span>
   </section>`;
   }
 
