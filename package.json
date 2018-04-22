@@ -17,7 +17,7 @@
     "chai": "4.1.2",
     "css-mqpacker": "6.0.0",
     "del": "2.2.2",
-    "eslint": "4.2.0",
+    "eslint": "^4.2.0",
     "eslint-config-htmlacademy": "0.4.x",
     "gulp": "3.9.1",
     "gulp-better-rollup": "3.1.0",

@@ -1,3 +1,4 @@
+const TIME_OUT = 0;
 const sortGameResults = (statistics, {points, notes, time} = {}) => {
   const quantityPoints = statistics.length;
   if (quantityPoints === 0 || !points || !notes || !time) {
@@ -12,6 +13,7 @@ const sortGameResults = (statistics, {points, notes, time} = {}) => {
   for (let i = 0; i < quantityPoints; i++) {
     if (statistics[i] === points) {
       playerPosition = i;
+      break;
     }
   }
 
@@ -29,7 +31,7 @@ const renderStringResult = (results) => {
   }
   const {playerPosition, quantityPoints, time, notes} = results;
   let message = `Вы заняли ${playerPosition} место из ${quantityPoints} игроков. Это лучше, чем у ${playerPosition / quantityPoints * 10}% игроков`;
-  if (!time === 0) {
+  if (!time === TIME_OUT) {
     message = `Время вышло! Вы не успели отгадать все мелодии!`;
   } else if (!notes) {
     message = `У вас закончились все попытки. Ничего, повезёт в следующий раз!`;

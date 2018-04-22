@@ -16,12 +16,16 @@ class AbstractView {
       return this._element;
     }
     this._element = this.render();
-    this.bind(this.element);
+    this.bind(this._element);
     return this._element;
   }
 
   render() {
     return createElement(this.template);
+  }
+
+  bind() {
+    throw new Error(`Method add handlers is required`);
   }
 }
 
