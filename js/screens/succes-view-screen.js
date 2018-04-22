@@ -1,7 +1,7 @@
 import {renderTemplate} from "./../utils";
 import welcomeScreen from "./welcome-view-screen";
-import {results} from "./../data/models/endGame";
-import SuccessView from "../view/result-success-view";
+import {results} from "./../models/endGame";
+import SuccessView from "./../view/result-success-view";
 
 const renderSuccess = () => {
   const successView = new SuccessView(results);
