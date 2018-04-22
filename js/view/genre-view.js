@@ -1,10 +1,12 @@
 import AbstractView from "./../abstract-view";
+import renderState from "./../screens/change-state-game-view-screen";
 
 class GenreView extends AbstractView {
-  constructor(data, level) {
+  constructor(data, level, state) {
     super();
     this.data = data;
     this.level = level;
+    this.state = state;
   }
 
   get tracks() {
@@ -29,6 +31,7 @@ class GenreView extends AbstractView {
 
   get template() {
     return `<section class="main main--level main--level-genre">
+    ${renderState(this.state)}
     <div class="main-wrap">
       <h2 class="title">${this.data.levels[this.level].title}</h2>
       <form class="genre">

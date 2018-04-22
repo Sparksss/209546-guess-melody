@@ -7,7 +7,7 @@ import GenreView from "../view/genre-view";
 
 const renderGenre = (state) => {
   const countAnswers = [];
-  const genreView = new GenreView(game, state.level);
+  const genreView = new GenreView(game, state.level, state);
   const addAnswer = (answer) => {
     return countAnswers.push(answer);
   };

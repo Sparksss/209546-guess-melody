@@ -7,7 +7,7 @@ import changeView from "../change-state";
 
 
 const renderArtist = (state) => {
-  const artistView = new ArtistView(game, state.level);
+  const artistView = new ArtistView(game, state.level, state);
 
   renderTemplate(artistView.element);
 
