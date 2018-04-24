@@ -1,16 +1,13 @@
-import config from "../lib/config";
-
 class GameModel {
-  constructor() {
-    this.state = Object.assign({}, config);
+  constructor(state) {
+    this.state = state;
   }
 
   get currentState() {
     return this.state;
   }
-
-  set nextLevel(level) {
-    this.state.level = level;
+  nextLevel() {
+    ++this.state.level;
   }
 
   get currentNotes() {
@@ -23,6 +20,21 @@ class GameModel {
 
   lostNote() {
     --this.state.notes;
+  }
+
+  checkAnswer(currentAnswer, checkElem, answers) {
+    let isCorrect = false;
+    for (const answer of answers) {
+      if (answer[checkElem] === currentAnswer) {
+        isCorrect = true;
+        break;
+      }
+    }
+    return isCorrect;
+  }
+
+  addAnswer(isCorrect) {
+    this.state.answers.push({answer: isCorrect, time: 32});
   }
 
 }
