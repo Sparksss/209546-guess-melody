@@ -4,6 +4,12 @@ const createElement = (str) => {
   return parser.content;
 };
 
+const createSection = () => {
+  const element = document.createElement(`section`);
+  element.classList.add(`main`, `main--level`);
+  return element;
+};
+
 const mainScreen = document.querySelector(`.main`);
 
 const renderTemplate = (screenTemplate) => {
@@ -22,4 +28,4 @@ const checkAnswer = (currentAnswer, answers) => {
   return isCorrect;
 };
 
-export {createElement, renderTemplate, checkAnswer};
+export {createElement, renderTemplate, checkAnswer, createSection};

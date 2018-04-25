@@ -1,12 +1,9 @@
-import renderArtist from "./screens/artist-view-screen";
-import renderGenre from "./screens/genre-view-screen";
 import renderSuccess from "./screens/succes-view-screen";
 import renderAttemptsEnded from "./screens/attempts-ended-screen";
 import renderTimeOut from "./screens/time-out-view-screen";
 import WelcomeView from "./view/welcome-view";
-import {game} from "./models/game";
-import ArtistView from "./view/artist-view";
 import GameModel from "./models/game-model";
+import GameScreen from "./screens/game-screen";
 
 const mainScreen = document.querySelector(`.main`);
 const renderTemplate = (screenTemplate) => {
@@ -21,9 +18,10 @@ class Application {
   }
 
   // переключения типа игры
-  static showGame(state) {
+  static showGame() {
     const gameScreen = new GameScreen(new GameModel());
     renderTemplate(gameScreen.element);
+    gameScreen.startGame();
   }
 
   static showSuccess() {

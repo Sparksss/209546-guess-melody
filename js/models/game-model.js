@@ -1,13 +1,20 @@
+import {initializationState} from "./../models/initialization-state";
+
 class GameModel {
-  constructor(state) {
-    this.state = state;
+  constructor() {
+    this.restart();
   }
 
   get currentState() {
     return this.state;
   }
+
   nextLevel() {
     ++this.state.level;
+  }
+
+  get currentLevel() {
+    return this.state.level;
   }
 
   get currentNotes() {
@@ -21,6 +28,11 @@ class GameModel {
   lostNote() {
     --this.state.notes;
   }
+
+  restart() {
+    this.state = initializationState();
+  }
+
 
   checkAnswer(currentAnswer, checkElem, answers) {
     let isCorrect = false;

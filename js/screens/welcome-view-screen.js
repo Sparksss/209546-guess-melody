@@ -1,16 +1,13 @@
 import WelcomeView from "./../view/welcome-view";
-import {startGame} from "./../models/startGame";
 import {renderTemplate} from "./../utils";
-import {initializationState} from "./../models/initialization-state";
-import changeView from "./../change-state";
+import Application from "../app";
 
 const renderWelcome = () => {
-  const previewView = new WelcomeView(startGame);
-  const state = initializationState();
+  const previewView = new WelcomeView();
 
   renderTemplate(previewView.element);
   previewView.playGame = () => {
-    changeView(state);
+    Application.showGame();
   };
 
 };
