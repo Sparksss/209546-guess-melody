@@ -6,7 +6,6 @@ const createElement = (str) => {
 
 const createSection = () => {
   const element = document.createElement(`section`);
-  element.classList.add(`main`, `main--level`);
   return element;
 };
 

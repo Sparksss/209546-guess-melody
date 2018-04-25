@@ -1,7 +1,4 @@
 import Application from "./../app";
-import renderSuccess from "./succes-view-screen";
-import renderGenre from "./genre-view-screen";
-import renderArtist from "./artist-view-screen";
 import {createSection} from "./../utils";
 import {game} from "./../models/game";
 import GenreView from "./../view/genre-view";
@@ -12,33 +9,61 @@ class GameScreen {
   constructor(model) {
     this.model = model;
     this.root = createSection();
-    this.header = new GetStateGame();
-    this.artist = new ArtistView(game, this.model.currentLevel, model.state);
+    this.header = new GetStateGame(this.model.currentState);
+    this.content = new ArtistView(game, this.model.currentLevel, this.model.currentState);
     this.root.appendChild(this.header.element);
-    this.root.appendChild(this.artist.element);
+    this.root.appendChild(this.content.element);
 
     this.timeOut = null;
   }
 
-  startGame() {
+  get element() {
+    return this.root;
+  }
 
+  startGame() {
+    this.updateHeader();
+    const level = this.changeLevel();
+    level.onAnswer.bind(this);
+    this.changeContentView(level);
   }
 
   changeLevel() {
     const currentLevel = this.model.currentLevel;
     const state = this.model.currentState;
-    if (currentLevel < game.levels.length) {
-      if (game.levels[currentLevel].type === `Artist`) {
-        renderArtist(state);
-      } else {
-        renderGenre(state);
-      }
+    let view = null;
+    if (game.levels[currentLevel].type === `Artist`) {
+      view = new ArtistView(game, this.model.currentLevel, state);
     } else {
-      renderSuccess(state);
+      view = new GenreView(game, this.model.currentLevel, state);
     }
+    return view;
+  }
+
+  changeContentView(view) {
+    this.root.replaceChild(view.element, this.content.element);
+    this.content = view;
   }
 
   updateHeader() {
+    const header = new GetStateGame(this.model.currentState);
+    this.root.replaceChild(this.header.element, header.element);
+    this.header = header;
+  }
+
+  onAnswer(evt) {
+    if (evt.target.classList.contains(`main-answer-preview`)) {
+      let currentAnswer = this.model.checkAnswer(evt.target.alt, game.levels[this.model.level].answers);
+      this.model.addAnswer({answer: currentAnswer, timeLimit: 32});
+      if (!currentAnswer) {
+        if (!this.model.lostNote(this.model)) {
+          console.log(`end's attempts`);
+        }
+        console.log(`game over`);
+      }
+      this.model.nextLevel();
+      this.changeLevel();
+    }
   }
 
 

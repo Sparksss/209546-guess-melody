@@ -27,7 +27,6 @@ class ArtistView extends AbstractView {
 
   get template() {
     return `<section class="main main--level main--level-artist">
-    ${renderState(this.state)}
     <div class="main-wrap">
       <h2 class="title main-title">${this.data.levels[this.level].title}</h2>
       <div class="player-wrapper">
@@ -44,12 +43,12 @@ class ArtistView extends AbstractView {
   </section>`;
   }
 
-  changeView() {
+  onAnswer() {
   }
 
   bind() {
     this.element.querySelector(`form.main-list`).addEventListener(`click`, (evt) => {
-      this.changeView(evt);
+      this.onAnswer(evt);
     });
   }
 }

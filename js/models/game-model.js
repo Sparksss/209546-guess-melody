@@ -2,7 +2,7 @@ import {initializationState} from "./../models/initialization-state";
 
 class GameModel {
   constructor() {
-    this.restart();
+    this.state = initializationState();
   }
 
   get currentState() {

@@ -4,11 +4,13 @@ class GetStateGame extends AbstractView {
   constructor(data) {
     super();
     this.data = data;
+    console.log(this.data.notes);
   }
 
   get notes() {
-    return new Array(3 - this.data.notes).fill(`<img class="main-mistake" src="img/wrong-answer.png" width="35" height="49">`).join(``);
+    return new Array(this.data.notes).fill(`<img class="main-mistake" src="img/wrong-answer.png" width="35" height="49">`).join(``);
   }
+
   get template() {
     return `<svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle
@@ -22,6 +24,10 @@ class GetStateGame extends AbstractView {
       </div>
     </svg>
     <div class="main-mistakes">${this.notes}</div>`;
+  }
+
+  bind() {
+    console.log(this.data.notes);
   }
 }
 
