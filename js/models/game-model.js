@@ -21,10 +21,6 @@ class GameModel {
     return this.state.notes;
   }
 
-  checkStillNumbersOfNotes() {
-    return this.state.notes - 1 > 0;
-  }
-
   lostNote() {
     --this.state.notes;
   }
