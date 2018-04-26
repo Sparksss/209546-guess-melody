@@ -4,11 +4,10 @@ class GetStateGame extends AbstractView {
   constructor(data) {
     super();
     this.data = data;
-    console.log(this.data.notes);
   }
 
   get notes() {
-    return new Array(this.data.notes).fill(`<img class="main-mistake" src="img/wrong-answer.png" width="35" height="49">`).join(``);
+    return new Array(3 - this.data.notes).fill(`<img class="main-mistake" src="img/wrong-answer.png" width="35" height="49">`).join(``);
   }
 
   get template() {
@@ -27,7 +26,7 @@ class GetStateGame extends AbstractView {
   }
 
   bind() {
-    console.log(this.data.notes);
+    return this.element;
   }
 }
 

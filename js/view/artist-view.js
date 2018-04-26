@@ -48,7 +48,9 @@ class ArtistView extends AbstractView {
 
   bind() {
     this.element.querySelector(`form.main-list`).addEventListener(`click`, (evt) => {
-      this.onAnswer(evt);
+      if (evt.target.classList.contains(`main-answer-preview`)) {
+        this.onAnswer(evt.target.alt);
+      }
     });
   }
 }

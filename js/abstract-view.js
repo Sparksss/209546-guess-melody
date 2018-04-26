@@ -1,4 +1,4 @@
-import {createElement} from "./utils";
+import {createSection} from "./utils";
 
 class AbstractView {
   constructor() {
@@ -21,7 +21,7 @@ class AbstractView {
   }
 
   render() {
-    return createElement(this.template);
+    return createSection(this.template);
   }
 
   bind() {

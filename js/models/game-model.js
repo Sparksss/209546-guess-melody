@@ -38,7 +38,7 @@ class GameModel {
     let isCorrect = false;
     for (const answer of answers) {
       if (answer[checkElem] === currentAnswer) {
-        isCorrect = true;
+        isCorrect = answer.isCorrect;
         break;
       }
     }
@@ -46,7 +46,7 @@ class GameModel {
   }
 
   addAnswer(isCorrect) {
-    this.state.answers.push({answer: isCorrect, time: 32});
+    this.state.answers.push(isCorrect);
   }
 
 }

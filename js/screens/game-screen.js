@@ -8,7 +8,7 @@ import GetStateGame from "../view/state-game-view";
 class GameScreen {
   constructor(model) {
     this.model = model;
-    this.root = createSection();
+    this.root = createSection(``);
     this.header = new GetStateGame(this.model.currentState);
     this.content = new ArtistView(game, this.model.currentLevel, this.model.currentState);
     this.root.appendChild(this.header.element);
@@ -24,7 +24,7 @@ class GameScreen {
   startGame() {
     this.updateHeader();
     const level = this.changeLevel();
-    level.onAnswer.bind(this);
+    level.onAnswer = this.answer.bind(this);
     this.changeContentView(level);
   }
 
@@ -33,9 +33,9 @@ class GameScreen {
     const state = this.model.currentState;
     let view = null;
     if (game.levels[currentLevel].type === `Artist`) {
-      view = new ArtistView(game, this.model.currentLevel, state);
+      view = new ArtistView(game, currentLevel, state);
     } else {
-      view = new GenreView(game, this.model.currentLevel, state);
+      view = new GenreView(game, currentLevel, state);
     }
     return view;
   }
@@ -46,23 +46,21 @@ class GameScreen {
   }
 
   updateHeader() {
-    const header = new GetStateGame(this.model.currentState);
-    this.root.replaceChild(this.header.element, header.element);
-    this.header = header;
+    const newHeader = new GetStateGame(this.model.currentState);
+    this.root.replaceChild(newHeader.element, this.header.element);
+    this.header = newHeader;
   }
 
-  onAnswer(evt) {
-    if (evt.target.classList.contains(`main-answer-preview`)) {
-      let currentAnswer = this.model.checkAnswer(evt.target.alt, game.levels[this.model.level].answers);
-      this.model.addAnswer({answer: currentAnswer, timeLimit: 32});
-      if (!currentAnswer) {
-        if (!this.model.lostNote(this.model)) {
-          console.log(`end's attempts`);
-        }
-        console.log(`game over`);
+  answer(answer) {
+    let currentAnswer = this.model.checkAnswer(answer, `title`, game.levels[this.model.currentLevel].answers);
+    this.model.addAnswer({answer: currentAnswer, timeLimit: 32});
+    if (!currentAnswer) {
+      this.model.lostNote();
+      if (!this.model.currentNotes) {
+        Application.showAttemptsEnded();
       }
       this.model.nextLevel();
-      this.changeLevel();
+      this.changeContentView(this.startGame());
     }
   }
 
