@@ -85,7 +85,6 @@ class GameScreen {
     if (isArtist) {
       this.canContinue(currentAnswer);
     }
-    console.log(this.model.currentState);
   }
 
   selectNote(target) {
@@ -102,7 +101,6 @@ class GameScreen {
     this.selectNote(evt.target);
     this.model.addGenreAnswer(this.model.checkAnswer(evt.target.dataset.identity, `title`, game.levels[this.model.currentLevel].answers));
     this.root.querySelector(`.genre-answer-send`).disabled = false;
-    console.log(this.model.countAnswers);
   }
 }
 
