@@ -24,7 +24,6 @@ class GameScreen {
   startGame() {
     this.updateHeader();
     const level = this.changeLevel();
-    level.onAnswer = this.answer.bind(this);
     this.changeContentView(level);
   }
 
@@ -34,8 +33,11 @@ class GameScreen {
     let view = null;
     if (game.levels[currentLevel].type === `Artist`) {
       view = new ArtistView(game, currentLevel, state);
+      view.onAnswer = this.answer.bind(this);
     } else {
       view = new GenreView(game, currentLevel, state);
+      view.onAnswer = this.changeAnswers.bind(this);
+      view.submitCheckedAnswers = this.selectedAnswers.bind(this);
     }
     return view;
   }
@@ -51,21 +53,56 @@ class GameScreen {
     this.header = newHeader;
   }
 
-  answer(answer) {
-    let currentAnswer = this.model.checkAnswer(answer, `title`, game.levels[this.model.currentLevel].answers);
-    this.model.addAnswer({answer: currentAnswer, timeLimit: 32});
-    if (!currentAnswer) {
-      this.model.lostNote();
-      if (!this.model.currentNotes) {
-        Application.showAttemptsEnded();
-      }
-      this.model.nextLevel();
-      this.changeContentView(this.startGame());
+  changeNextLevel() {
+    if (this.model.currentLevel < game.levels.length) {
+      this.startGame();
+    } else {
+      Application.showSuccess();
     }
   }
 
+  isRightOfAnswer(answer) {
+    let checkContinue = true;
+    if (!answer) {
+      this.model.lossOfNote();
+      checkContinue = this.model.currentNotes;
+    }
+    return checkContinue;
+  }
 
-  init() {
+  canContinue(currentAnswer) {
+    if (this.isRightOfAnswer(currentAnswer)) {
+      this.model.nextLevel();
+      this.changeNextLevel();
+    } else {
+      Application.showAttemptsEnded();
+    }
+  }
+
+  answer(answer, isArtist) {
+    let currentAnswer = this.model.checkAnswer(answer, `title`, game.levels[this.model.currentLevel].answers);
+    this.model.addAnswer({answer: currentAnswer, timeLimit: 32});
+    if (isArtist) {
+      this.canContinue(currentAnswer);
+    }
+
+  }
+
+  selectNote(target) {
+    target.previousElementSibling.checked = true;
+  }
+
+  selectedAnswers() {
+    const isCorrectAnswer = this.model.isCorrectAnswers(this.model.countAnswers);
+    this.model.addAnswer({answer: isCorrectAnswer, timeLimit: 32});
+    this.canContinue(isCorrectAnswer);
+  }
+
+  changeAnswers(evt) {
+    this.selectNote(evt.target);
+    this.model.addGenreAnswer(this.model.checkAnswer(evt.target.dataset.identity, `title`, game.levels[this.model.currentLevel].answers));
+    this.root.querySelector(`.genre-answer-send`).disabled = false;
+    console.log(this.model.countAnswers);
   }
 }
 

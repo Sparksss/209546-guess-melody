@@ -16,7 +16,7 @@ class ArtistView extends AbstractView {
       listArtists += `<div class="main-answer-wrapper">
           <input class="main-answer-r" type="radio" id="answer-1" name="answer" value="val-1"/>
           <label class="main-answer" for="answer-1">
-            <img class="main-answer-preview" src="${this.data.levels[this.level].answers[i].img}"
+            <img class="main-answer-preview" data-identity="${this.data.levels[this.level].answers[i].title}" src="${this.data.levels[this.level].answers[i].img}"
                  alt="${this.data.levels[this.level].answers[i].title}" width="134" height="134">
             ${this.data.levels[this.level].answers[i].title}
           </label>
@@ -49,7 +49,7 @@ class ArtistView extends AbstractView {
   bind() {
     this.element.querySelector(`form.main-list`).addEventListener(`click`, (evt) => {
       if (evt.target.classList.contains(`main-answer-preview`)) {
-        this.onAnswer(evt.target.alt);
+        this.onAnswer(evt.target.dataset.identity, `Artist`);
       }
     });
   }

@@ -17,18 +17,32 @@ class GameModel {
     return this.state.level;
   }
 
+  isCorrectAnswers(answers) {
+    const isCorrectAnswer = answers.every((answer) => {
+      return answer === true;
+    });
+    return isCorrectAnswer;
+  }
+
   get currentNotes() {
     return this.state.notes;
   }
 
-  lostNote() {
+  lossOfNote() {
     --this.state.notes;
   }
 
-  restart() {
-    this.state = initializationState();
+  isTheGameOver() {
+    return this.state.notes - 1 > 0;
   }
 
+  get countAnswers() {
+    return this.state.countAnswers;
+  }
+
+  addGenreAnswer(answer) {
+    this.state.countAnswers.push(answer);
+  }
 
   checkAnswer(currentAnswer, checkElem, answers) {
     let isCorrect = false;

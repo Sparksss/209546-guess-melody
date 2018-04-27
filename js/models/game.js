@@ -48,48 +48,48 @@ const game = {
         }
       ]
     },
-    // {
-    //   type: `Artist`,
-    //   title: `Кто исполняет эту песню?`,
-    //   answers: [
-    //     {
-    //       title: `Сплин`,
-    //       isCorrect: true,
-    //       img: `http://placehold.it/134x134`,
-    //     },
-    //     {
-    //       title: `Наутилус помпилус`,
-    //       isCorrect: false,
-    //       img: `http://placehold.it/134x134`,
-    //     },
-    //     {
-    //       title: `Кино`,
-    //       isCorrect: false,
-    //       img: `http://placehold.it/134x134`,
-    //     }
-    //   ]
-    // },
-    // {
-    //   type: `Artist`,
-    //   title: `Кто исполняет эту песню?`,
-    //   answers: [
-    //     {
-    //       title: `Алиса`,
-    //       isCorrect: false,
-    //       img: `http://placehold.it/134x134`,
-    //     },
-    //     {
-    //       title: `Краснознамённая дивизия имени моей бабушки`,
-    //       isCorrect: true,
-    //       img: `http://placehold.it/134x134`,
-    //     },
-    //     {
-    //       title: `Пошлая Молли`,
-    //       isCorrect: false,
-    //       img: `http://placehold.it/134x134`,
-    //     }
-    //   ]
-    // },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `Сплин`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Наутилус помпилус`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Кино`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
+    {
+      type: `Artist`,
+      title: `Кто исполняет эту песню?`,
+      answers: [
+        {
+          title: `Алиса`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Краснознамённая дивизия имени моей бабушки`,
+          isCorrect: true,
+          img: `http://placehold.it/134x134`,
+        },
+        {
+          title: `Пошлая Молли`,
+          isCorrect: false,
+          img: `http://placehold.it/134x134`,
+        }
+      ]
+    },
     // {
     //   type: `Artist`,
     //   title: `Кто исполняет эту песню?`,
@@ -222,7 +222,7 @@ const game = {
       ]
     },
   ],
-  statistics: [],
+  statistics: []
 };
 
 export {game};

@@ -1,5 +1,4 @@
 import AbstractView from "./../abstract-view";
-import renderState from "./../screens/change-state-game-view-screen";
 
 class GenreView extends AbstractView {
   constructor(data, level, state) {
@@ -22,8 +21,8 @@ class GenreView extends AbstractView {
               </div>
             </div>
           </div>
-          <input type="checkbox" name="answer" value="answer-1" id="a-2">
-          <label class="genre-answer-check" for="${this.data.levels[this.level].answers[i].title}"></label>
+          <input type="checkbox" name="answer" value="answer-1" id="${this.data.levels[this.level].answers[i].title}">
+          <label class="genre-answer-check" data-identity="${this.data.levels[this.level].answers[i].title}" for="${this.data.levels[this.level].answers[i].title}"></label>
         </div>`;
     }
     return listOfTracks;
@@ -31,7 +30,6 @@ class GenreView extends AbstractView {
 
   get template() {
     return `<section class="main main--level main--level-genre">
-    ${renderState(this.state)}
     <div class="main-wrap">
       <h2 class="title">${this.data.levels[this.level].title}</h2>
       <form class="genre">
@@ -42,12 +40,20 @@ class GenreView extends AbstractView {
   </section>`;
   }
 
-  changeScreen() {
+  onAnswer() {
+  }
+
+  submitCheckedAnswers() {
   }
 
   bind() {
     this.element.querySelector(`form.genre`).addEventListener(`click`, (evt) => {
-      this.changeScreen(evt);
+      evt.preventDefault();
+      if (evt.target.classList.contains(`genre-answer-check`)) {
+        this.onAnswer(evt);
+      } else if (evt.target.classList.contains(`genre-answer-send`)) {
+        this.submitCheckedAnswers();
+      }
     });
   }
 }
