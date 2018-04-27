@@ -32,10 +32,6 @@ class GameModel {
     --this.state.notes;
   }
 
-  isTheGameOver() {
-    return this.state.notes - 1 > 0;
-  }
-
   get countAnswers() {
     return this.state.countAnswers;
   }

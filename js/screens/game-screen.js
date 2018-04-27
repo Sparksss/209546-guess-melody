@@ -57,7 +57,7 @@ class GameScreen {
     if (this.model.currentLevel < game.levels.length) {
       this.startGame();
     } else {
-      Application.showSuccess();
+      Application.showSuccess(this.model.currentState);
     }
   }
 
@@ -75,7 +75,7 @@ class GameScreen {
       this.model.nextLevel();
       this.changeNextLevel();
     } else {
-      Application.showAttemptsEnded();
+      Application.showAttemptsEnded(this.model.currentState);
     }
   }
 
@@ -85,7 +85,7 @@ class GameScreen {
     if (isArtist) {
       this.canContinue(currentAnswer);
     }
-
+    console.log(this.model.currentState);
   }
 
   selectNote(target) {

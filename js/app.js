@@ -24,16 +24,16 @@ class Application {
     gameScreen.startGame();
   }
 
-  static showSuccess() {
-    renderSuccess();
+  static showSuccess(state) {
+    renderSuccess(state);
   }
 
-  static showAttemptsEnded() {
-    renderAttemptsEnded();
+  static showAttemptsEnded(state) {
+    renderAttemptsEnded(state);
   }
 
-  static showTimeOut() {
-    renderTimeOut();
+  static showTimeOut(state) {
+    renderTimeOut(state);
   }
 }
 
