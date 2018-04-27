@@ -16,6 +16,12 @@ class GameModel {
     }
   }
 
+  getMinutesAndSeconds() {
+    const minutes = Math.floor(this.state.time / 60);
+
+    return {minutes, seconds: this.state.time - minutes * 60};
+  }
+
   nextLevel() {
     ++this.state.level;
   }

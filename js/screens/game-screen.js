@@ -9,7 +9,7 @@ class GameScreen {
   constructor(model) {
     this.model = model;
     this.root = createSection(``);
-    this.header = new GetStateGame(this.model.currentState);
+    this.header = new GetStateGame(this.model.currentState, this.model.getMinutesAndSeconds());
     this.content = new ArtistView(game, this.model.currentLevel, this.model.currentState);
     this.root.appendChild(this.header.element);
     this.root.appendChild(this.content.element);
@@ -56,7 +56,7 @@ class GameScreen {
   }
 
   updateHeader() {
-    const newHeader = new GetStateGame(this.model.currentState);
+    const newHeader = new GetStateGame(this.model.currentState, this.model.getMinutesAndSeconds());
     this.root.replaceChild(newHeader.element, this.header.element);
     this.header = newHeader;
   }
