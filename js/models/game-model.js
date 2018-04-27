@@ -9,6 +9,13 @@ class GameModel {
     return this.state;
   }
 
+  tick() {
+    --this.state.time;
+    if (this.state.time <= 0) {
+      this.state.time = `time is over!`;
+    }
+  }
+
   nextLevel() {
     ++this.state.level;
   }

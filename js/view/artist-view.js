@@ -1,5 +1,4 @@
 import AbstractView from "./../abstract-view";
-import renderState from "./../screens/change-state-game-view-screen";
 
 class ArtistView extends AbstractView {
   constructor(data, level, state) {

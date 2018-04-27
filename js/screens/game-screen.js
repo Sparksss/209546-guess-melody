@@ -14,7 +14,7 @@ class GameScreen {
     this.root.appendChild(this.header.element);
     this.root.appendChild(this.content.element);
 
-    this.timeOut = null;
+    this._interval = null;
   }
 
   get element() {
@@ -25,6 +25,14 @@ class GameScreen {
     this.updateHeader();
     const level = this.changeLevel();
     this.changeContentView(level);
+    this._interval = setInterval(() => {
+      this.model.tick();
+      this.updateHeader();
+    }, 1000);
+  }
+
+  stopGame() {
+    clearInterval(this._interval);
   }
 
   changeLevel() {
@@ -57,6 +65,7 @@ class GameScreen {
     if (this.model.currentLevel < game.levels.length) {
       this.startGame();
     } else {
+      this.stopGame();
       Application.showSuccess(this.model.currentState);
     }
   }
@@ -75,6 +84,7 @@ class GameScreen {
       this.model.nextLevel();
       this.changeNextLevel();
     } else {
+      this.stopGame();
       Application.showAttemptsEnded(this.model.currentState);
     }
   }
