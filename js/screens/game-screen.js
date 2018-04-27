@@ -28,6 +28,10 @@ class GameScreen {
     this._interval = setInterval(() => {
       this.model.tick();
       this.updateHeader();
+      if (!this.model.timer) {
+        this.stopGame();
+        Application.showTimeOut(this.model.currentState);
+      }
     }, 1000);
   }
 
