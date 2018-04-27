@@ -36,6 +36,7 @@ class GameScreen {
   }
 
   changeLevel() {
+    this.stopGame();
     const currentLevel = this.model.currentLevel;
     const state = this.model.currentState;
     let view = null;
