@@ -16,6 +16,18 @@ class GameModel {
     }
   }
 
+  get currentTime() {
+    return this.state.time;
+  }
+
+  set setTimeAnswer(time) {
+    this.state.lostTime = time;
+  }
+
+  get lostTime() {
+    return this.state.lostTime;
+  }
+
   get timer() {
     return this.state.time;
   }

@@ -25,6 +25,7 @@ class GameScreen {
     this.updateHeader();
     const level = this.changeLevel();
     this.changeContentView(level);
+    this.model.setTimeAnswer = this.model.timer;
     this._interval = setInterval(() => {
       this.model.tick();
       this.updateHeader();
@@ -95,8 +96,9 @@ class GameScreen {
   }
 
   answer(answer, isArtist) {
+    const timeToAnswer = this.model.lostTime - this.model.currentTime;
     let currentAnswer = this.model.checkAnswer(answer, `title`, game.levels[this.model.currentLevel].answers);
-    this.model.addAnswer({answer: currentAnswer, timeLimit: 32});
+    this.model.addAnswer({answer: currentAnswer, timeLimit: timeToAnswer});
     if (isArtist) {
       this.canContinue(currentAnswer);
     }
