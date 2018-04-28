@@ -24,8 +24,8 @@ class Application {
     gameScreen.startGame();
   }
 
-  static showSuccess(state) {
-    renderSuccess(state);
+  static showSuccess(state, statistics, currentTime) {
+    renderSuccess(state, statistics, currentTime);
   }
 
   static showAttemptsEnded(state) {

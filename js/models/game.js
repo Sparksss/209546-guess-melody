@@ -222,7 +222,7 @@ const game = {
       ]
     },
   ],
-  statistics: []
+  statistics: [1, 2]
 };
 
 export {game};

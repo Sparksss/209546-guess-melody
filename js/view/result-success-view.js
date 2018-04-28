@@ -2,20 +2,23 @@ import AbstractView from "./../abstract-view";
 
 
 class SuccessView extends AbstractView {
-  constructor(data, state) {
+  constructor(data, state, message, currentTime, speedScore) {
     super();
     this.data = data;
     this.state = state;
+    this.message = message;
+    this.currentTime = currentTime;
+    this.speedScore = speedScore;
   }
 
   get template() {
     return `<section class="main main--result">
     <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
     <h2 class="title">Вы настоящий меломан!</h2>
-    <div class="main-stat">${this.data.success.time}
-      <br>${this.data.success.pointsCount}
+    <div class="main-stat">За&nbsp;${this.currentTime.minutes}&nbsp;минуты и ${this.currentTime.seconds}&nbsp;секунд
+      <br>вы&nbsp;набрали ${this.state.points} баллов (${this.speedScore} быстрых)
       <br>совершив ${3 - this.state.notes} ошибки</div>
-    <span class="main-comparison">${this.data.success.raiting}</span>
+    <span class="main-comparison">${this.message}</span>
     <span role="button" tabindex="0" class="main-replay">${this.data.playAgainSucces}</span>
   </section>`;
   }

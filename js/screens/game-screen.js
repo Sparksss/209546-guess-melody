@@ -72,7 +72,7 @@ class GameScreen {
       this.startGame();
     } else {
       this.stopGame();
-      Application.showSuccess(this.model.currentState);
+      Application.showSuccess(this.model.currentState, game.statistics, this.model.getMinutesAndSeconds());
     }
   }
 
