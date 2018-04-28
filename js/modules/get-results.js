@@ -1,7 +1,7 @@
-const MIN_ANSWERS = 2;
+const MIN_ANSWERS = 10;
 const MAX_TIME_LIMIT_BONUS = 30;
 let speedScore = 0;
-const getResults = (answers, notes) => {
+const getResults = (answers, notes = 0) => {
   let sum = 0;
   if (!Array.isArray(answers) || answers.length < MIN_ANSWERS || notes === 0) {
     return -1;
