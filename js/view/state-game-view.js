@@ -1,14 +1,16 @@
 import AbstractView from "./../abstract-view";
 
 class GetStateGame extends AbstractView {
-  constructor(data) {
+  constructor(data, timer) {
     super();
     this.data = data;
+    this.timer = timer;
   }
 
   get notes() {
     return new Array(3 - this.data.notes).fill(`<img class="main-mistake" src="img/wrong-answer.png" width="35" height="49">`).join(``);
   }
+
   get template() {
     return `<svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
       <circle
@@ -16,12 +18,16 @@ class GetStateGame extends AbstractView {
         class="timer-line"
         style="filter: url(..#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"></circle>
       <div class="timer-value" xmlns="http://www.w3.org/1999/xhtml">
-        <span class="timer-value-mins">05</span>
+        <span class="timer-value-mins">0${this.timer.minutes}</span>
         <span class="timer-value-dots">:</span>
-        <span class="timer-value-secs">00</span>
+        <span class="timer-value-secs">${this.timer.seconds}</span>
       </div>
     </svg>
     <div class="main-mistakes">${this.notes}</div>`;
+  }
+
+  bind() {
+    return this.element;
   }
 }
 

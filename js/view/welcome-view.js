@@ -1,4 +1,5 @@
 import AbstractView from "./../abstract-view";
+import Application from "../app";
 
 class WelcomeView extends AbstractView {
   constructor(data) {
@@ -8,19 +9,16 @@ class WelcomeView extends AbstractView {
 
   get template() {
     return `<section class="main main--welcome">
-    <section class="logo" title="${this.data.title}"><h1>${this.data.title}</h1></section>
-    <button class="main-play">${this.data.start}</button>
-    <h2 class="title main-title">${this.data.rules.title}</h2>
-    <p class="text main-text">${this.data.rules.description}</p>
+    <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
+    <button class="main-play">Начать игру</button>
+    <h2 class="title main-title">Правила игры</h2>
+    <p class="text main-text">Правила просты&nbsp;— за&nbsp;5 минут ответить на все вопросы.<br>Ошибиться можно 3 раза.<br>Удачи!</p>
   </section>`;
-  }
-
-  playGame() {
   }
 
   bind() {
     this.element.querySelector(`button.main-play`).addEventListener(`click`, () => {
-      this.playGame();
+      Application.showGame();
     });
   }
 }

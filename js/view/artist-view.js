@@ -1,5 +1,4 @@
 import AbstractView from "./../abstract-view";
-import renderState from "./../screens/change-state-game-view-screen";
 
 class ArtistView extends AbstractView {
   constructor(data, level, state) {
@@ -16,7 +15,7 @@ class ArtistView extends AbstractView {
       listArtists += `<div class="main-answer-wrapper">
           <input class="main-answer-r" type="radio" id="answer-1" name="answer" value="val-1"/>
           <label class="main-answer" for="answer-1">
-            <img class="main-answer-preview" src="${this.data.levels[this.level].answers[i].img}"
+            <img class="main-answer-preview" data-identity="${this.data.levels[this.level].answers[i].title}" src="${this.data.levels[this.level].answers[i].img}"
                  alt="${this.data.levels[this.level].answers[i].title}" width="134" height="134">
             ${this.data.levels[this.level].answers[i].title}
           </label>
@@ -27,7 +26,6 @@ class ArtistView extends AbstractView {
 
   get template() {
     return `<section class="main main--level main--level-artist">
-    ${renderState(this.state)}
     <div class="main-wrap">
       <h2 class="title main-title">${this.data.levels[this.level].title}</h2>
       <div class="player-wrapper">
@@ -44,12 +42,14 @@ class ArtistView extends AbstractView {
   </section>`;
   }
 
-  changeView() {
+  onAnswer() {
   }
 
   bind() {
     this.element.querySelector(`form.main-list`).addEventListener(`click`, (evt) => {
-      this.changeView(evt);
+      if (evt.target.classList.contains(`main-answer-preview`)) {
+        this.onAnswer(evt.target.dataset.identity, `Artist`);
+      }
     });
   }
 }
