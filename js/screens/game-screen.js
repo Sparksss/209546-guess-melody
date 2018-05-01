@@ -70,7 +70,7 @@ class GameScreen {
   }
 
   changeNextLevel() {
-    if (this.model.currentLevel < game.levels.length) {
+    if (this.model.currentLevel < this.model.getData.length) {
       this.startGame();
     } else {
       this.stopGame();
