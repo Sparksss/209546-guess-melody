@@ -89,13 +89,10 @@ class GameModel {
     return isCorrect;
   }
 
-  checkAnswerForGenre(currentAnswer, checkElem, answers) {
+  checkAnswerForGenre(currentAnswer, rightAnswer) {
     let isCorrect = false;
-    for (const answer of answers) {
-      if (answer[checkElem] === currentAnswer) {
-        isCorrect = true;
-        break;
-      }
+    if (currentAnswer === rightAnswer) {
+      isCorrect = true;
     }
     return isCorrect;
   }

@@ -99,7 +99,7 @@ class GameScreen {
 
   answer(answer, isArtist) {
     const timeToAnswer = this.model.lostTime - this.model.currentTime;
-    let currentAnswer = this.model.checkAnswer(answer, `title`, game.levels[this.model.currentLevel].answers);
+    let currentAnswer = this.model.checkAnswer(answer, `title`, this.model.getData[this.model.currentLevel].answers);
     this.model.addAnswer({answer: currentAnswer, timeLimit: timeToAnswer});
     if (isArtist) {
       this.canContinue(currentAnswer);
@@ -121,7 +121,7 @@ class GameScreen {
     const data = this.model.getData;
     const level = this.model.currentLevel;
     this.selectNote(evt.target);
-    this.model.addGenreAnswer(this.model.checkAnswerForGenre(evt.target.dataset.identity, `genre`, data[level].answers));
+    this.model.addGenreAnswer(this.model.checkAnswerForGenre(evt.target.dataset.identity, data[level].genre));
     this.root.querySelector(`.genre-answer-send`).disabled = false;
   }
 }
