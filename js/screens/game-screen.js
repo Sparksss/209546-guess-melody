@@ -47,7 +47,7 @@ class GameScreen {
     const currentLevel = this.model.currentLevel;
     const data = this.model.getData;
     let view = null;
-    if (data[currentLevel].type === `Artist`) {
+    if (data[currentLevel].type === `artist`) {
       view = new ArtistView(data, currentLevel);
       view.onAnswer = this.answer.bind(this);
     } else {
