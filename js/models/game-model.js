@@ -1,8 +1,17 @@
 import {initializationState} from "./../models/initialization-state";
 
 class GameModel {
-  constructor() {
+  constructor(data) {
+    this.setData = data;
     this.state = initializationState();
+  }
+
+  set setData(data) {
+    this.data = data;
+  }
+
+  get getData() {
+    return this.data;
   }
 
   get currentState() {
@@ -74,6 +83,17 @@ class GameModel {
     for (const answer of answers) {
       if (answer[checkElem] === currentAnswer) {
         isCorrect = answer.isCorrect;
+        break;
+      }
+    }
+    return isCorrect;
+  }
+
+  checkAnswerForGenre(currentAnswer, checkElem, answers) {
+    let isCorrect = false;
+    for (const answer of answers) {
+      if (answer[checkElem] === currentAnswer) {
+        isCorrect = true;
         break;
       }
     }

@@ -5,21 +5,39 @@ import WelcomeView from "./view/welcome-view";
 import GameModel from "./models/game-model";
 import GameScreen from "./screens/game-screen";
 
+
 const mainScreen = document.querySelector(`.main`);
 const renderTemplate = (screenTemplate) => {
   mainScreen.innerHTML = ``;
   mainScreen.appendChild(screenTemplate);
 };
 
+const checkStatus = (response) => {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  } else {
+    throw new Error(`${response.status}: ${response.statusText}`);
+  }
+};
+let gameData;
 class Application {
-  static showWelcome() {
+  static showWelcome(data) {
+    gameData = data;
     const welcome = new WelcomeView();
     renderTemplate(welcome.element);
   }
 
+  static startGame() {
+    window.fetch(`https://es.dump.academy/guess-melody/questions`).
+      then(checkStatus).
+      then((response) => response.json()).
+      then(Application.showWelcome).
+      catch((error) => error);
+  }
+
   // переключения типа игры
   static showGame() {
-    const gameScreen = new GameScreen(new GameModel());
+    const gameScreen = new GameScreen(new GameModel(gameData));
     renderTemplate(gameScreen.element);
     gameScreen.startGame();
   }

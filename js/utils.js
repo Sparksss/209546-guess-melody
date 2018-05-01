@@ -4,7 +4,7 @@ const createElement = (str) => {
   return parser.content;
 };
 
-const createSection = (str) => {
+const createSection = (str = ``) => {
   const element = document.createElement(`section`);
   element.innerHTML = str;
   return element;

@@ -25,7 +25,7 @@ class AbstractView {
   }
 
   bind() {
-    throw new Error(`Method add handlers is required`);
+    // this method is must be overridden in child class
   }
 }
 
