@@ -29,10 +29,10 @@ class Application {
 
   static startGame() {
     window.fetch(`https://es.dump.academy/guess-melody/questions`).
-      then(checkStatus).
-      then((response) => response.json()).
-      then(Application.showWelcome).
-      catch((error) => error);
+        then(checkStatus).
+        then((response) => response.json()).
+        then(Application.showWelcome).
+        catch((error) => error);
   }
 
   // переключения типа игры
