@@ -1,11 +1,6 @@
-const createElement = (str) => {
-  const parser = document.createElement(`template`);
-  parser.innerHTML = str;
-  return parser.content;
-};
-
 const createSection = (str = ``) => {
   const element = document.createElement(`section`);
+  element.style.marginBottom = `200px`;
   element.innerHTML = str;
   return element;
 };
@@ -17,15 +12,4 @@ const renderTemplate = (screenTemplate) => {
   mainScreen.appendChild(screenTemplate);
 };
 
-const checkAnswer = (currentAnswer, answers) => {
-  let isCorrect;
-  for (let i = 0; i < answers.length; i++) {
-    if (currentAnswer === answers[i].title) {
-      isCorrect = answers[i].isCorrect;
-      break;
-    }
-  }
-  return isCorrect;
-};
-
-export {createElement, renderTemplate, checkAnswer, createSection};
+export {renderTemplate, createSection};
