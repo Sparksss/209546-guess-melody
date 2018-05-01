@@ -29,7 +29,7 @@ class ArtistView extends AbstractView {
       <h2 class="title main-title">${this.data[this.level].question}</h2>
       <div class="player-wrapper">
         <div class="player">
-          <audio src="https://www.youtube.com/audiolibrary_download?vid=bcbe5be936a32fb1"></audio>
+          <audio src="${this.data[this.level].src}" autoplay></audio>
           <button class="player-control player-control--pause"></button>
           <div class="player-track">
             <span class="player-status"></span>
