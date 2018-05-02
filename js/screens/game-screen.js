@@ -54,6 +54,7 @@ class GameScreen {
       view = new GenreView(data, currentLevel);
       view.onAnswer = this.changeAnswers.bind(this);
       view.submitCheckedAnswers = this.selectedAnswers.bind(this);
+      view.controlMusic = this.switchPlaying.bind(this);
     }
     return view;
   }
@@ -123,6 +124,17 @@ class GameScreen {
     this.selectNote(evt.target);
     this.model.addGenreAnswer(this.model.checkAnswerForGenre(evt.target.dataset.identity, data[level].genre));
     this.root.querySelector(`.genre-answer-send`).disabled = false;
+  }
+
+  switchPlaying(playElement, control) {
+    if (control === `play`) {
+      playElement.play();
+      control = `pause`;
+    } else {
+      playElement.pause();
+      control = `play`;
+    }
+    return control;
   }
 }
 

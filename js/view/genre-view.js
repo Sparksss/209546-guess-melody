@@ -13,7 +13,7 @@ class GenreView extends AbstractView {
       listOfTracks += ` <div class="genre-answer">
           <div class="player-wrapper">
             <div class="player">
-              <audio src="${this.data[this.level].answers[i].src}"></audio>
+              <audio src="${this.data[this.level].answers[i].src}" data-control="play"></audio>
               <button class="player-control player-control--play"></button>
               <div class="player-track">
                 <span class="player-status"></span>
@@ -45,7 +45,14 @@ class GenreView extends AbstractView {
   submitCheckedAnswers() {
   }
 
+  controlMusic() {
+  }
+
   bind() {
+    this.element.querySelectorAll(`.player-control`).forEach((elem) => elem.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+      evt.target.previousElementSibling.dataset.control = this.controlMusic(evt.target.previousElementSibling, evt.target.previousElementSibling.dataset.control);
+    }));
     this.element.querySelector(`form.genre`).addEventListener(`click`, (evt) => {
       evt.preventDefault();
       if (evt.target.classList.contains(`genre-answer-check`)) {
