@@ -52,6 +52,7 @@ class GenreView extends AbstractView {
     this.element.querySelectorAll(`.player-control`).forEach((elem) => elem.addEventListener(`click`, (evt) => {
       evt.preventDefault();
       evt.target.previousElementSibling.dataset.control = this.controlMusic(evt.target.previousElementSibling, evt.target.previousElementSibling.dataset.control);
+      evt.target.classList.toggle(`player-control--pause`);
     }));
     this.element.querySelector(`form.genre`).addEventListener(`click`, (evt) => {
       evt.preventDefault();
