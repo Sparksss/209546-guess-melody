@@ -2,9 +2,8 @@ import AbstractView from "./../abstract-view";
 
 
 class SuccessView extends AbstractView {
-  constructor(data, state, message, currentTime, speedScore) {
+  constructor(state, message, currentTime, speedScore) {
     super();
-    this.data = data;
     this.state = state;
     this.message = message;
     this.currentTime = currentTime;
@@ -19,7 +18,7 @@ class SuccessView extends AbstractView {
       <br>вы&nbsp;набрали ${this.state.points} баллов (${this.speedScore} быстрых)
       <br>совершив ${3 - this.state.notes} ошибки</div>
     <span class="main-comparison">${this.message}</span>
-    <span role="button" tabindex="0" class="main-replay">${this.data.playAgainSucces}</span>
+    <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
   </section>`;
   }
 

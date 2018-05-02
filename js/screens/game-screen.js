@@ -8,9 +8,9 @@ import GetStateGame from "../view/state-game-view";
 class GameScreen {
   constructor(model) {
     this.model = model;
-    this.root = createSection(``);
+    this.root = createSection();
     this.header = new GetStateGame(this.model.currentState, this.model.getMinutesAndSeconds());
-    this.content = new ArtistView(game, this.model.currentLevel, this.model.currentState);
+    this.content = this.changeLevel();
     this.root.appendChild(this.header.element);
     this.root.appendChild(this.content.element);
 
@@ -41,18 +41,21 @@ class GameScreen {
   }
 
   changeLevel() {
-    this.stopGame();
+    if (this._interval) {
+      this.stopGame();
+    }
     const currentLevel = this.model.currentLevel;
-    const state = this.model.currentState;
+    const data = this.model.getData;
     let view = null;
-    if (game.levels[currentLevel].type === `Artist`) {
-      view = new ArtistView(game, currentLevel, state);
+    if (data[currentLevel].type === `artist`) {
+      view = new ArtistView(data, currentLevel);
       view.onAnswer = this.answer.bind(this);
     } else {
-      view = new GenreView(game, currentLevel, state);
+      view = new GenreView(data, currentLevel);
       view.onAnswer = this.changeAnswers.bind(this);
       view.submitCheckedAnswers = this.selectedAnswers.bind(this);
     }
+    view.controlMusic = this.switchPlaying.bind(this);
     return view;
   }
 
@@ -68,7 +71,7 @@ class GameScreen {
   }
 
   changeNextLevel() {
-    if (this.model.currentLevel < game.levels.length) {
+    if (this.model.currentLevel < this.model.getData.length) {
       this.startGame();
     } else {
       this.stopGame();
@@ -97,7 +100,7 @@ class GameScreen {
 
   answer(answer, isArtist) {
     const timeToAnswer = this.model.lostTime - this.model.currentTime;
-    let currentAnswer = this.model.checkAnswer(answer, `title`, game.levels[this.model.currentLevel].answers);
+    let currentAnswer = this.model.checkAnswer(answer, `title`, this.model.getData[this.model.currentLevel].answers);
     this.model.addAnswer({answer: currentAnswer, timeLimit: timeToAnswer});
     if (isArtist) {
       this.canContinue(currentAnswer);
@@ -109,15 +112,29 @@ class GameScreen {
   }
 
   selectedAnswers() {
+    const timeToAnswer = this.model.lostTime - this.model.currentTime;
     const isCorrectAnswer = this.model.isCorrectAnswers(this.model.countAnswers);
-    this.model.addAnswer({answer: isCorrectAnswer, timeLimit: 32});
+    this.model.addAnswer({answer: isCorrectAnswer, timeLimit: timeToAnswer});
     this.canContinue(isCorrectAnswer);
   }
 
   changeAnswers(evt) {
+    const data = this.model.getData;
+    const level = this.model.currentLevel;
     this.selectNote(evt.target);
-    this.model.addGenreAnswer(this.model.checkAnswer(evt.target.dataset.identity, `title`, game.levels[this.model.currentLevel].answers));
+    this.model.addGenreAnswer(this.model.checkAnswerForGenre(evt.target.dataset.identity, data[level].genre));
     this.root.querySelector(`.genre-answer-send`).disabled = false;
+  }
+
+  switchPlaying(playElement, control) {
+    if (control === `play`) {
+      playElement.play();
+      control = `pause`;
+    } else {
+      playElement.pause();
+      control = `play`;
+    }
+    return control;
   }
 }
 

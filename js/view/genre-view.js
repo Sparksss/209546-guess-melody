@@ -1,28 +1,27 @@
 import AbstractView from "./../abstract-view";
 
 class GenreView extends AbstractView {
-  constructor(data, level, state) {
+  constructor(data, level) {
     super();
     this.data = data;
     this.level = level;
-    this.state = state;
   }
 
   get tracks() {
     let listOfTracks = ``;
-    for (let i = 0; i < this.data.levels[this.level].answers.length; i++) {
+    for (let i = 0; i < this.data[this.level].answers.length; i++) {
       listOfTracks += ` <div class="genre-answer">
           <div class="player-wrapper">
             <div class="player">
-              <audio src="${this.data.levels[this.level].answers[i].src}"></audio>
+              <audio src="${this.data[this.level].answers[i].src}" data-control="play"></audio>
               <button class="player-control player-control--play"></button>
               <div class="player-track">
                 <span class="player-status"></span>
               </div>
             </div>
           </div>
-          <input type="checkbox" name="answer" value="answer-1" id="${this.data.levels[this.level].answers[i].title}">
-          <label class="genre-answer-check" data-identity="${this.data.levels[this.level].answers[i].title}" for="${this.data.levels[this.level].answers[i].title}"></label>
+          <input type="checkbox" name="answer" value="answer-1" id="a-${i}">
+          <label class="genre-answer-check" data-identity="${this.data[this.level].answers[i].genre}" for="a-${i}"></label>
         </div>`;
     }
     return listOfTracks;
@@ -31,7 +30,7 @@ class GenreView extends AbstractView {
   get template() {
     return `<section class="main main--level main--level-genre">
     <div class="main-wrap">
-      <h2 class="title">${this.data.levels[this.level].title}</h2>
+      <h2 class="title">${this.data[this.level].question}</h2>
       <form class="genre">
         ${this.tracks}
         <button class="genre-answer-send" type="submit" disabled>Ответить</button>
@@ -46,7 +45,15 @@ class GenreView extends AbstractView {
   submitCheckedAnswers() {
   }
 
+  controlMusic() {
+  }
+
   bind() {
+    this.element.querySelectorAll(`.player-control`).forEach((elem) => elem.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+      evt.target.previousElementSibling.dataset.control = this.controlMusic(evt.target.previousElementSibling, evt.target.previousElementSibling.dataset.control);
+      evt.target.classList.toggle(`player-control--pause`);
+    }));
     this.element.querySelector(`form.genre`).addEventListener(`click`, (evt) => {
       evt.preventDefault();
       if (evt.target.classList.contains(`genre-answer-check`)) {

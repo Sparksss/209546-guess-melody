@@ -4,6 +4,8 @@ import renderTimeOut from "./screens/time-out-view-screen";
 import WelcomeView from "./view/welcome-view";
 import GameModel from "./models/game-model";
 import GameScreen from "./screens/game-screen";
+import ShowError from "./view/error-view";
+
 
 const mainScreen = document.querySelector(`.main`);
 const renderTemplate = (screenTemplate) => {
@@ -11,15 +13,32 @@ const renderTemplate = (screenTemplate) => {
   mainScreen.appendChild(screenTemplate);
 };
 
+const checkStatus = (response) => {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  } else {
+    return Application.showError(`${response.status}: ${response.statusText}`);
+  }
+};
+let gameData;
 class Application {
-  static showWelcome() {
+  static showWelcome(data) {
+    gameData = data;
     const welcome = new WelcomeView();
     renderTemplate(welcome.element);
   }
 
+  static startGame() {
+    window.fetch(`https://es.dump.academy/guess-melody/questions`).
+        then(checkStatus).
+        then((response) => response.json()).
+        then(Application.showWelcome).
+        catch(Application.showError);
+  }
+
   // переключения типа игры
   static showGame() {
-    const gameScreen = new GameScreen(new GameModel());
+    const gameScreen = new GameScreen(new GameModel(gameData));
     renderTemplate(gameScreen.element);
     gameScreen.startGame();
   }
@@ -34,6 +53,10 @@ class Application {
 
   static showTimeOut(state) {
     renderTimeOut(state);
+  }
+  static showError() {
+    const showError = new ShowError(`Отсутствует доступ к сети Интернет!`);
+    renderTemplate(showError.element);
   }
 }
 
