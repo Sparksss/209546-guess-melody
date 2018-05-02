@@ -4,6 +4,7 @@ import renderTimeOut from "./screens/time-out-view-screen";
 import WelcomeView from "./view/welcome-view";
 import GameModel from "./models/game-model";
 import GameScreen from "./screens/game-screen";
+import ShowError from "./view/error-view";
 
 
 const mainScreen = document.querySelector(`.main`);
@@ -16,7 +17,7 @@ const checkStatus = (response) => {
   if (response.status >= 200 && response.status < 300) {
     return response;
   } else {
-    throw new Error(`${response.status}: ${response.statusText}`);
+    return Application.showError(`${response.status}: ${response.statusText}`);
   }
 };
 let gameData;
@@ -32,7 +33,7 @@ class Application {
         then(checkStatus).
         then((response) => response.json()).
         then(Application.showWelcome).
-        catch((error) => error);
+        catch(Application.showError);
   }
 
   // переключения типа игры
@@ -52,6 +53,10 @@ class Application {
 
   static showTimeOut(state) {
     renderTimeOut(state);
+  }
+  static showError() {
+    const showError = new ShowError(`Отсутствует доступ к сети Интернет!`);
+    renderTemplate(showError.element);
   }
 }
 
