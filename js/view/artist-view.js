@@ -29,7 +29,7 @@ class ArtistView extends AbstractView {
       <h2 class="title main-title">${this.data[this.level].question}</h2>
       <div class="player-wrapper">
         <div class="player">
-          <audio src="${this.data[this.level].src}" autoplay></audio>
+          <audio src="${this.data[this.level].src}" autoplay data-control="pause"></audio>
           <button class="player-control player-control--pause"></button>
           <div class="player-track">
             <span class="player-status"></span>
@@ -44,7 +44,16 @@ class ArtistView extends AbstractView {
   onAnswer() {
   }
 
+  controlMusic() {
+  }
+
   bind() {
+    this.element.querySelector(`.player-control`).addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+      evt.target.classList.toggle(`player-control--pause`);
+      evt.target.classList.toggle(`player-control--play`);
+      evt.target.previousElementSibling.dataset.control = this.controlMusic(evt.target.previousElementSibling, evt.target.previousElementSibling.dataset.control);
+    });
     this.element.querySelector(`form.main-list`).addEventListener(`click`, (evt) => {
       if (evt.target.classList.contains(`main-answer-preview`)) {
         this.onAnswer(evt.target.dataset.identity, `Artist`);

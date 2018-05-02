@@ -54,8 +54,8 @@ class GameScreen {
       view = new GenreView(data, currentLevel);
       view.onAnswer = this.changeAnswers.bind(this);
       view.submitCheckedAnswers = this.selectedAnswers.bind(this);
-      view.controlMusic = this.switchPlaying.bind(this);
     }
+    view.controlMusic = this.switchPlaying.bind(this);
     return view;
   }
 
