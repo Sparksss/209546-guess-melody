@@ -1,5 +1,7 @@
 import {initializationState} from "./../models/initialization-state";
+
 const LESS_THEN_TEN_SECONDS = 10;
+
 class GameModel {
   constructor(data) {
     this.setData = data;
@@ -18,13 +20,6 @@ class GameModel {
     return this.state;
   }
 
-  tick() {
-    --this.state.time;
-    if (this.state.time <= 0) {
-      this.state.time = `time is over!`;
-    }
-  }
-
   get currentTime() {
     return this.state.time;
   }
@@ -41,6 +36,28 @@ class GameModel {
     return this.state.time;
   }
 
+  get currentLevel() {
+    return this.state.level;
+  }
+
+
+  get currentNotes() {
+    return this.state.notes;
+  }
+
+
+  get countAnswers() {
+    return this.state.countAnswers;
+  }
+
+
+  tick() {
+    --this.state.time;
+    if (this.state.time <= 0) {
+      this.state.time = `time is over!`;
+    }
+  }
+
   getMinutesAndSeconds() {
     const minutes = Math.floor(this.state.time / 60);
     const seconds = this.state.time - minutes * 60;
@@ -51,10 +68,6 @@ class GameModel {
     ++this.state.level;
   }
 
-  get currentLevel() {
-    return this.state.level;
-  }
-
   isCorrectAnswers(answers) {
     const isCorrectAnswer = answers.every((answer) => {
       return answer === true;
@@ -62,16 +75,8 @@ class GameModel {
     return isCorrectAnswer;
   }
 
-  get currentNotes() {
-    return this.state.notes;
-  }
-
   lossOfNote() {
     --this.state.notes;
-  }
-
-  get countAnswers() {
-    return this.state.countAnswers;
   }
 
   addGenreAnswer(answer) {
