@@ -8,6 +8,8 @@ import ShowError from "./view/error-view";
 import {GameData} from "./models/game";
 
 
+const URL_GET_STATISTICS = `https://es.dump.academy/guess-melody/stats/${GameData.ID}`;
+const URL_GET_DATA = `https://es.dump.academy/guess-melody/questions`;
 const mainScreen = document.querySelector(`.main`);
 const renderTemplate = (screenTemplate) => {
   mainScreen.innerHTML = ``;
@@ -31,7 +33,7 @@ class Application {
     gameData = data;
     const welcome = new WelcomeView();
     renderTemplate(welcome.element);
-    fetch(`https://es.dump.academy/guess-melody/stats/${GameData.ID}`).
+    fetch(URL_GET_STATISTICS).
         then(checkStatus).
         then((response) => response.json()).
         then(addStatisticsFromServer).
@@ -39,7 +41,7 @@ class Application {
   }
 
   static startGame() {
-    window.fetch(`https://es.dump.academy/guess-melody/questions`).
+    window.fetch(URL_GET_DATA).
         then(checkStatus).
         then((response) => response.json()).
         then(Application.showWelcome).

@@ -5,11 +5,13 @@ import {getResults, speedScore} from "./../modules/get-results";
 import {GameData} from "./../models/game";
 import {sortGameResults, renderStringResult} from "./../modules/sort-results";
 
+const URL_SEND = `https://es.dump.academy/guess-melody/stats/${GameData.ID}`;
+
 const renderSuccess = (state, currentTime) => {
   state.points = getResults(state.answers, state.notes);
   const message = renderStringResult(sortGameResults(GameData.statistics, state));
   const successView = new SuccessView(state, message, currentTime, speedScore);
-  window.fetch(`https://es.dump.academy/guess-melody/stats/${GameData.ID}`, {
+  window.fetch(URL_SEND, {
     method: `POST`,
     body: JSON.stringify({
       answers: state.points
