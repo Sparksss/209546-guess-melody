@@ -33,7 +33,7 @@ const renderStringResult = (results) => {
     return -1;
   }
   const {playerPosition, quantityPoints, time, notes} = results;
-  let message = `Вы заняли ${playerPosition + correctPositionInArray} место из ${quantityPoints} игроков. Это лучше, чем у ${playerPosition / quantityPoints * 10}% игроков`;
+  let message = `Вы заняли ${playerPosition + correctPositionInArray} место из ${quantityPoints} игроков. Это лучше, чем у ${(quantityPoints - playerPosition) * 10}% игроков`;
   if (!time === TIME_OUT) {
     message = `Время вышло! Вы не успели отгадать все мелодии!`;
   } else if (!notes) {
