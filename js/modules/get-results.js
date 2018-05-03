@@ -7,11 +7,11 @@ const getResults = (answers, notes = 0) => {
     return -1;
   }
 
-  for (let i = answers.length; i--;) {
-    if (answers[i].answer) {
-      if (answers[i].timeLimit < MAX_TIME_LIMIT_BONUS) {
+  for (const current of answers) {
+    if (current.answer) {
+      if (current.timeLimit < MAX_TIME_LIMIT_BONUS) {
         ++sum;
-        speedScore++;
+        ++speedScore;
       }
       ++sum;
     } else {
