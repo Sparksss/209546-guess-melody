@@ -2,7 +2,7 @@ import {initializationState} from "./../models/initialization-state";
 
 const LESS_THEN_TEN_SECONDS = 10;
 const SECONDS_IN_MINUTE = 60;
-
+const TIME_IS_RUNNING_OUT = 30;
 class GameModel {
   constructor(data) {
     this.setData = data;
@@ -59,7 +59,11 @@ class GameModel {
   getMinutesAndSeconds() {
     const minutes = Math.floor(this.state.time / SECONDS_IN_MINUTE);
     const seconds = this.state.time - minutes * SECONDS_IN_MINUTE;
-    return {minutes, seconds: seconds < LESS_THEN_TEN_SECONDS ? `0${seconds}` : seconds};
+    let timeOut = ``;
+    if (this.state.time < TIME_IS_RUNNING_OUT) {
+      timeOut = `timer-value-dots`;
+    }
+    return {minutes, seconds: seconds < LESS_THEN_TEN_SECONDS ? `0${seconds}` : seconds, timeOut};
   }
 
   nextLevel() {

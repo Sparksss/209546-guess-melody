@@ -18,7 +18,7 @@ class GetStateGame extends AbstractView {
         class="timer-line"
         style="filter: url(..#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"></circle>
     </svg>
-    <div class="timer-value">
+    <div class="timer-value ${this.timer.timeOut}">
         <span class="timer-value-mins">0${this.timer.minutes}</span>
         <span class="timer-value-dots">:</span>
         <span class="timer-value-secs">${this.timer.seconds}</span>
