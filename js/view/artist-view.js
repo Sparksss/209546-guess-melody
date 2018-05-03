@@ -41,12 +41,6 @@ class ArtistView extends AbstractView {
   </section>`;
   }
 
-  onAnswer() {
-  }
-
-  controlMusic() {
-  }
-
   bind() {
     this.element.querySelector(`.player-control`).addEventListener(`click`, (evt) => {
       evt.preventDefault();
@@ -59,6 +53,12 @@ class ArtistView extends AbstractView {
         this.onAnswer(evt.target.dataset.identity, `Artist`);
       }
     });
+  }
+
+  onAnswer() {
+  }
+
+  controlMusic() {
   }
 }
 

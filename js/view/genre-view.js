@@ -39,15 +39,6 @@ class GenreView extends AbstractView {
   </section>`;
   }
 
-  onAnswer() {
-  }
-
-  submitCheckedAnswers() {
-  }
-
-  controlMusic() {
-  }
-
   bind() {
     this.element.querySelectorAll(`.player-control`).forEach((elem) => elem.addEventListener(`click`, (evt) => {
       evt.preventDefault();
@@ -62,6 +53,15 @@ class GenreView extends AbstractView {
         this.submitCheckedAnswers();
       }
     });
+  }
+
+  onAnswer() {
+  }
+
+  submitCheckedAnswers() {
+  }
+
+  controlMusic() {
   }
 }
 
