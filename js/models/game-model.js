@@ -73,7 +73,7 @@ class GameModel {
     return isCorrectAnswer;
   }
 
-  lossOfNote() {
+  keepLostOfNote() {
     --this.state.notes;
   }
 

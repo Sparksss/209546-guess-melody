@@ -81,7 +81,7 @@ class GameScreen {
   isRightOfAnswer(answer) {
     let checkContinue = true;
     if (!answer) {
-      this.model.lossOfNote();
+      this.model.keepLostOfNote();
       checkContinue = this.model.currentNotes;
     }
     return checkContinue;
