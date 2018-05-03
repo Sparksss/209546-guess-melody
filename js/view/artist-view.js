@@ -9,17 +9,17 @@ class ArtistView extends AbstractView {
 
   get artistsList() {
     let listArtists = ``;
-    const lengOfArtistList = this.data[this.level].answers.length;
-    for (let i = 0; i < lengOfArtistList; i++) {
+    const answersData = this.data[this.level].answers;
+    answersData.forEach((currentAnswer) => {
       listArtists += `<div class="main-answer-wrapper">
           <input class="main-answer-r" type ="radio" id="answer-1" name="answer" value="val-1"/>
           <label class="main-answer" for="answer-1">
-            <img class="main-answer-preview" data-identity="${this.data[this.level].answers[i].title}" src="${this.data[this.level].answers[i].image.url}"
-                 alt="${this.data[this.level].answers[i].title}" width="134" height="134">
-            ${this.data[this.level].answers[i].title}
+            <img class="main-answer-preview" data-identity="${currentAnswer.title}" src="${currentAnswer.image.url}"
+                 alt="${currentAnswer.title}" width="134" height="134">
+            ${currentAnswer.title}
           </label>
         </div>`;
-    }
+    });
     return listArtists;
   }
 
