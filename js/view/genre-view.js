@@ -9,21 +9,22 @@ class GenreView extends AbstractView {
 
   get tracks() {
     let listOfTracks = ``;
-    for (let i = 0; i < this.data[this.level].answers.length; i++) {
+    const answersData = this.data[this.level].answers;
+    answersData.forEach((currentAnswer, index) => {
       listOfTracks += ` <div class="genre-answer">
           <div class="player-wrapper">
             <div class="player">
-              <audio src="${this.data[this.level].answers[i].src}" data-control="play"></audio>
+              <audio src="${currentAnswer.src}" data-control="play"></audio>
               <button class="player-control player-control--play"></button>
               <div class="player-track">
                 <span class="player-status"></span>
               </div>
             </div>
           </div>
-          <input type="checkbox" name="answer" value="answer-1" id="a-${i}">
-          <label class="genre-answer-check" data-identity="${this.data[this.level].answers[i].genre}" for="a-${i}"></label>
+          <input type="checkbox" name="answer" value="answer-1" id="a-${index}">
+          <label class="genre-answer-check" data-identity="${currentAnswer.genre}" for="a-${index}"></label>
         </div>`;
-    }
+    });
     return listOfTracks;
   }
 
