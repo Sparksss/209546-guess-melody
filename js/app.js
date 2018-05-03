@@ -21,9 +21,8 @@ const renderTemplate = (screenTemplate) => {
 const checkStatus = (response) => {
   if (response.status >= STATUS_MIN && response.status < STATUS_MAX) {
     return response;
-  } else {
-    return Application.showError(`${response.status}: ${response.statusText}`);
   }
+  return Application.showError(`${response.status}: ${response.statusText}`);
 };
 
 const addStatisticsFromServer = (response) => {
