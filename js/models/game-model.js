@@ -93,11 +93,7 @@ class GameModel {
   }
 
   checkAnswerForGenre(currentAnswer, rightAnswer) {
-    let isCorrect = false;
-    if (currentAnswer === rightAnswer) {
-      isCorrect = true;
-    }
-    return isCorrect;
+    return currentAnswer === rightAnswer;
   }
 
   addAnswer(isCorrect) {
