@@ -9,7 +9,7 @@ const renderSuccess = (state, currentTime) => {
   state.points = getResults(state.answers, state.notes);
   const message = renderStringResult(sortGameResults(game.statistics, state));
   const successView = new SuccessView(state, message, currentTime, speedScore);
-  fetch(`https://es.dump.academy/guess-melody/stats/${game.ID}`, {
+  window.fetch(`https://es.dump.academy/guess-melody/stats/${game.ID}`, {
     method: `POST`,
     body: JSON.stringify({
       answers: game.statistics
