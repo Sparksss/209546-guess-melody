@@ -4,6 +4,8 @@ import GenreView from "./../view/genre-view";
 import ArtistView from "./../view/artist-view";
 import GetStateGame from "../view/state-game-view";
 
+const ONE_SECOND = 1000;
+
 class GameScreen {
   constructor(model) {
     this.model = model;
@@ -32,7 +34,7 @@ class GameScreen {
         this.stopGame();
         Application.showTimeOut(this.model.currentState);
       }
-    }, 1000);
+    }, ONE_SECOND);
   }
 
   stopGame() {
@@ -48,7 +50,7 @@ class GameScreen {
     let view = null;
     if (data[currentLevel].type === `artist`) {
       view = new ArtistView(data, currentLevel);
-      view.onAnswer = this.answer.bind(this);
+      view.onAnswer = this.selectAnswer.bind(this);
     } else {
       view = new GenreView(data, currentLevel);
       view.onAnswer = this.changeAnswers.bind(this);
@@ -97,7 +99,7 @@ class GameScreen {
     }
   }
 
-  answer(answer, isArtist) {
+  selectAnswer(answer, isArtist) {
     const timeToAnswer = this.model.lostTime - this.model.currentTime;
     let currentAnswer = this.model.checkAnswer(answer, `title`, this.model.getData[this.model.currentLevel].answers);
     this.model.addAnswer({answer: currentAnswer, timeLimit: timeToAnswer});
