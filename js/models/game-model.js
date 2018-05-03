@@ -1,5 +1,5 @@
 import {initializationState} from "./../models/initialization-state";
-
+const LESS_THEN_TEN_SECONDS = 10;
 class GameModel {
   constructor(data) {
     this.setData = data;
@@ -43,8 +43,8 @@ class GameModel {
 
   getMinutesAndSeconds() {
     const minutes = Math.floor(this.state.time / 60);
-
-    return {minutes, seconds: this.state.time - minutes * 60};
+    const seconds = this.state.time - minutes * 60;
+    return {minutes, seconds: seconds < LESS_THEN_TEN_SECONDS ? `0${seconds}` : seconds};
   }
 
   nextLevel() {

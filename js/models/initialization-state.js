@@ -1,20 +1,7 @@
-import config from "../lib/config";
+import GameConfig from "../lib/config";
 
 const initializationState = () => {
-  return Object.assign({}, config);
+  return Object.assign({}, GameConfig);
 };
 
-const lostNote = (state) => state.notes - 1 > 0;
-
-const gameOver = (state) => {
-  if (!lostNote(state)) {
-    throw new Error(`Notes ended!`);
-  }
-
-  --state.notes;
-
-  return state;
-};
-
-
-export {initializationState, lostNote, gameOver};
+export {initializationState};

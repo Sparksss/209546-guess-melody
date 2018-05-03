@@ -5,6 +5,7 @@ import WelcomeView from "./view/welcome-view";
 import GameModel from "./models/game-model";
 import GameScreen from "./screens/game-screen";
 import ShowError from "./view/error-view";
+import {GameData} from "./models/game";
 
 
 const mainScreen = document.querySelector(`.main`);
@@ -20,12 +21,21 @@ const checkStatus = (response) => {
     return Application.showError(`${response.status}: ${response.statusText}`);
   }
 };
+
+const addStatisticsFromServer = (response) => {
+  GameData.statistics = response;
+};
 let gameData;
 class Application {
   static showWelcome(data) {
     gameData = data;
     const welcome = new WelcomeView();
     renderTemplate(welcome.element);
+    fetch(`https://es.dump.academy/guess-melody/stats/${GameData.ID}`).
+        then(checkStatus).
+        then((response) => response.json()).
+        then(addStatisticsFromServer).
+        catch(Application.showError);
   }
 
   static startGame() {
@@ -43,8 +53,8 @@ class Application {
     gameScreen.startGame();
   }
 
-  static showSuccess(state, statistics, currentTime) {
-    renderSuccess(state, statistics, currentTime);
+  static showSuccess(state, currentTime) {
+    renderSuccess(state, currentTime);
   }
 
   static showAttemptsEnded(state) {

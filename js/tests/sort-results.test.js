@@ -4,15 +4,13 @@ import {sortGameResults, renderStringResult} from "./../modules/sort-results";
 const putArray = () => {
   let arr = [];
   for (let i = 6; i--;) {
-    arr.push(Math.trunc(Math.random() * (30 - 10) + 10));
+    const answer = Math.trunc(Math.random() * (30 - 10) + 10);
+    arr.push({answers: answer});
   }
   return arr;
 };
 
 describe(`Check points of all users`, () => {
-  it(`should return if game results is empty`, () => {
-    assert(-1, sortGameResults([], {points: 14, notes: 2, time: 10}));
-  });
   it(`should return a object`, () => {
     assert.typeOf(sortGameResults(putArray(), {points: 14, notes: 2, time: 10}), `Object`);
   });
