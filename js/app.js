@@ -43,8 +43,8 @@ class Application {
     gameScreen.startGame();
   }
 
-  static showSuccess(state, statistics, currentTime) {
-    renderSuccess(state, statistics, currentTime);
+  static showSuccess(state, currentTime) {
+    renderSuccess(state, currentTime);
   }
 
   static showAttemptsEnded(state) {

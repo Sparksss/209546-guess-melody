@@ -1,6 +1,5 @@
 import Application from "./../app";
 import {createSection} from "./../utils";
-import {game} from "./../models/game";
 import GenreView from "./../view/genre-view";
 import ArtistView from "./../view/artist-view";
 import GetStateGame from "../view/state-game-view";
@@ -75,7 +74,7 @@ class GameScreen {
       this.startGame();
     } else {
       this.stopGame();
-      Application.showSuccess(this.model.currentState, game.statistics, this.model.getMinutesAndSeconds());
+      Application.showSuccess(this.model.currentState, this.model.getMinutesAndSeconds());
     }
   }
 
