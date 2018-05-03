@@ -6,20 +6,16 @@ import GameModel from "./models/game-model";
 import GameScreen from "./screens/game-screen";
 import ShowError from "./view/error-view";
 import {GameData} from "./models/game";
+import {LINKS, STATUSES} from "./modules/network-data";
 
-
-const URL_GET_STATISTICS = `https://es.dump.academy/guess-melody/stats/${GameData.ID}`;
-const URL_GET_DATA = `https://es.dump.academy/guess-melody/questions`;
 const mainScreen = document.querySelector(`.main`);
-const STATUS_MIN = 200;
-const STATUS_MAX = 300;
 const renderTemplate = (screenTemplate) => {
   mainScreen.innerHTML = ``;
   mainScreen.appendChild(screenTemplate);
 };
 
 const checkStatus = (response) => {
-  if (response.status >= STATUS_MIN && response.status < STATUS_MAX) {
+  if (response.status >= STATUSES.STATUS_MIN && response.status < STATUSES.STATUS_MAX) {
     return response;
   }
   return Application.showError(`${response.status}: ${response.statusText}`);
@@ -34,7 +30,7 @@ class Application {
     gameData = data;
     const welcome = new WelcomeView();
     renderTemplate(welcome.element);
-    fetch(URL_GET_STATISTICS).
+    fetch(LINKS.URL_GET_STATISTICS).
         then(checkStatus).
         then((response) => response.json()).
         then(addStatisticsFromServer).
@@ -42,14 +38,13 @@ class Application {
   }
 
   static startGame() {
-    window.fetch(URL_GET_DATA).
+    window.fetch(LINKS.URL_GET_DATA).
         then(checkStatus).
         then((response) => response.json()).
         then(Application.showWelcome).
         catch(Application.showError);
   }
 
-  // переключения типа игры
   static showGame() {
     const gameScreen = new GameScreen(new GameModel(gameData));
     renderTemplate(gameScreen.element);
@@ -68,7 +63,7 @@ class Application {
     renderTimeOut(state);
   }
   static showError() {
-    const showError = new ShowError(`Отсутствует доступ к сети Интернет!`);
+    const showError = new ShowError(STATUSES.CONNECTION_LOST);
     renderTemplate(showError.element);
   }
 }
