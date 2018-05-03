@@ -5,6 +5,10 @@ import ArtistView from "./../view/artist-view";
 import GetStateGame from "../view/state-game-view";
 
 const ONE_SECOND = 1000;
+const TYPE_OF_LEVELS = {
+  artist: `artist`,
+  genre: `genre`
+};
 
 class GameScreen {
   constructor(model) {
@@ -48,16 +52,19 @@ class GameScreen {
     const currentLevel = this.model.currentLevel;
     const data = this.model.getData;
     let view = null;
-    if (data[currentLevel].type === `artist`) {
-      view = new ArtistView(data, currentLevel);
-      view.onAnswer = this.selectAnswer.bind(this);
-    } else {
-      view = new GenreView(data, currentLevel);
-      view.onAnswer = this.changeAnswers.bind(this);
-      view.submitCheckedAnswers = this.selectedAnswers.bind(this);
+    switch (data[currentLevel].type) {
+      case TYPE_OF_LEVELS.artist:
+        view = new ArtistView(data, currentLevel);
+        view.onAnswer = this.selectAnswer.bind(this);
+        break;
+      case TYPE_OF_LEVELS.genre:
+        view = new GenreView(data, currentLevel);
+        view.onAnswer = this.changeAnswers.bind(this);
+        view.submitCheckedAnswers = this.selectedAnswers.bind(this);
     }
     view.controlMusic = this.switchPlaying.bind(this);
     return view;
+
   }
 
   changeContentView(view) {
@@ -128,12 +135,15 @@ class GameScreen {
   }
 
   switchPlaying(playElement, control) {
-    if (control === `play`) {
-      playElement.play();
-      control = `pause`;
-    } else {
-      playElement.pause();
-      control = `play`;
+    switch (control) {
+      case `play`:
+        playElement.play();
+        control = `pause`;
+        break;
+      case `pause`:
+        playElement.pause();
+        control = `play`;
+        break;
     }
     return control;
   }
