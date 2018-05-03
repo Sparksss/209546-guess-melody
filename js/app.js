@@ -11,13 +11,15 @@ import {GameData} from "./models/game";
 const URL_GET_STATISTICS = `https://es.dump.academy/guess-melody/stats/${GameData.ID}`;
 const URL_GET_DATA = `https://es.dump.academy/guess-melody/questions`;
 const mainScreen = document.querySelector(`.main`);
+const STATUS_MIN = 200;
+const STATUS_MAX = 300;
 const renderTemplate = (screenTemplate) => {
   mainScreen.innerHTML = ``;
   mainScreen.appendChild(screenTemplate);
 };
 
 const checkStatus = (response) => {
-  if (response.status >= 200 && response.status < 300) {
+  if (response.status >= STATUS_MIN && response.status < STATUS_MAX) {
     return response;
   } else {
     return Application.showError(`${response.status}: ${response.statusText}`);
