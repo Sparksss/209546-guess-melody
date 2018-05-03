@@ -4,7 +4,8 @@ import {sortGameResults, renderStringResult} from "./../modules/sort-results";
 const putArray = () => {
   let arr = [];
   for (let i = 6; i--;) {
-    arr.push(Math.trunc(Math.random() * (30 - 10) + 10));
+    const answer = Math.trunc(Math.random() * (30 - 10) + 10);
+    arr.push({answers: answer});
   }
   return arr;
 };

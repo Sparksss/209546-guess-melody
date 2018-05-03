@@ -1,4 +1,4 @@
-const gameConfig = Object.freeze({
+const GameConfig = Object.freeze({
   time: 300,
   notes: 3,
   level: 0,
@@ -6,4 +6,4 @@ const gameConfig = Object.freeze({
   countAnswers: []
 });
 
-export default gameConfig;
+export default GameConfig;

@@ -1,6 +1,6 @@
-const game = {
+const GameData = {
   ID: 755896302,
   statistics: []
 };
 
-export {game};
+export {GameData};

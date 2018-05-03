@@ -2,17 +2,17 @@ import {renderTemplate} from "./../utils";
 import welcomeScreen from "./welcome-view-screen";
 import SuccessView from "./../view/result-success-view";
 import {getResults, speedScore} from "./../modules/get-results";
-import {game} from "./../models/game";
+import {GameData} from "./../models/game";
 import {sortGameResults, renderStringResult} from "./../modules/sort-results";
 
 const renderSuccess = (state, currentTime) => {
   state.points = getResults(state.answers, state.notes);
-  const message = renderStringResult(sortGameResults(game.statistics, state));
+  const message = renderStringResult(sortGameResults(GameData.statistics, state));
   const successView = new SuccessView(state, message, currentTime, speedScore);
-  window.fetch(`https://es.dump.academy/guess-melody/stats/${game.ID}`, {
+  window.fetch(`https://es.dump.academy/guess-melody/stats/${GameData.ID}`, {
     method: `POST`,
     body: JSON.stringify({
-      answers: game.statistics
+      answers: state.points
     }),
     headers: {
       "Content-Type": `application/json`

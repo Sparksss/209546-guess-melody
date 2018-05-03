@@ -5,7 +5,7 @@ import WelcomeView from "./view/welcome-view";
 import GameModel from "./models/game-model";
 import GameScreen from "./screens/game-screen";
 import ShowError from "./view/error-view";
-import {game} from "./models/game";
+import {GameData} from "./models/game";
 
 
 const mainScreen = document.querySelector(`.main`);
@@ -23,7 +23,7 @@ const checkStatus = (response) => {
 };
 
 const addStatisticsFromServer = (response) => {
-  game.statistics = response;
+  GameData.statistics = response;
 };
 let gameData;
 class Application {
@@ -31,7 +31,7 @@ class Application {
     gameData = data;
     const welcome = new WelcomeView();
     renderTemplate(welcome.element);
-    fetch(`https://es.dump.academy/guess-melody/stats/${game.ID}`).
+    fetch(`https://es.dump.academy/guess-melody/stats/${GameData.ID}`).
         then(checkStatus).
         then((response) => response.json()).
         then(addStatisticsFromServer).

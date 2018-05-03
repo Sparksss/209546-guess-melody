@@ -6,13 +6,13 @@ const sortGameResults = (statistics, {points, notes, time} = {}) => {
     return -1;
   }
   let playerPosition = 0;
-  statistics.push(points);
+  statistics.push({answers: points});
   statistics.sort((prev, next) => {
-    return prev > next;
+    return prev.answers > next.answers;
   });
 
   for (let i = 0; i < quantityPoints; i++) {
-    if (statistics[i] === points) {
+    if (statistics[i].answers === points) {
       playerPosition = i;
       break;
     }
