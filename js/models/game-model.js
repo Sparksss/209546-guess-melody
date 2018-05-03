@@ -1,6 +1,7 @@
 import {initializationState} from "./../models/initialization-state";
 
 const LESS_THEN_TEN_SECONDS = 10;
+const SECONDS_IN_MINUTE = 60;
 
 class GameModel {
   constructor(data) {
@@ -53,14 +54,11 @@ class GameModel {
 
   tick() {
     --this.state.time;
-    if (this.state.time <= 0) {
-      this.state.time = `time is over!`;
-    }
   }
 
   getMinutesAndSeconds() {
-    const minutes = Math.floor(this.state.time / 60);
-    const seconds = this.state.time - minutes * 60;
+    const minutes = Math.floor(this.state.time / SECONDS_IN_MINUTE);
+    const seconds = this.state.time - minutes * SECONDS_IN_MINUTE;
     return {minutes, seconds: seconds < LESS_THEN_TEN_SECONDS ? `0${seconds}` : seconds};
   }
 
