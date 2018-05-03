@@ -80,11 +80,10 @@ class GameScreen {
 
   changeNextLevel() {
     if (this.model.currentLevel < this.model.getData.length) {
-      this.startGame();
-    } else {
-      this.stopGame();
-      Application.showSuccess(this.model.currentState, this.model.getMinutesAndSeconds());
+      return this.startGame();
     }
+    this.stopGame();
+    return Application.showSuccess(this.model.currentState, this.model.getMinutesAndSeconds());
   }
 
   isRightOfAnswer(answer) {
