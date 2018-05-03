@@ -1,5 +1,5 @@
 const game = {
-  statistics: [1, 2]
+  statistics: []
 };
 
 export {game};

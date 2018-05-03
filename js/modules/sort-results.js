@@ -2,10 +2,11 @@ const TIME_OUT = 0;
 const correctPositionInArray = 1;
 const sortGameResults = (statistics, {points, notes, time} = {}) => {
   const quantityPoints = statistics.length;
-  if (quantityPoints === 0 || !points || !notes || !time) {
+  if (!points || !notes || !time) {
     return -1;
   }
   let playerPosition = 0;
+  statistics.push(points);
   statistics.sort((prev, next) => {
     return prev > next;
   });
