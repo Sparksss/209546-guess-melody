@@ -7,12 +7,7 @@ import GameScreen from "./screens/game-screen";
 import ShowError from "./view/error-view";
 import {GameData} from "./models/game";
 import {LINKS, STATUSES} from "./modules/network-data";
-
-const mainScreen = document.querySelector(`.main`);
-const renderTemplate = (screenTemplate) => {
-  mainScreen.innerHTML = ``;
-  mainScreen.appendChild(screenTemplate);
-};
+import {renderTemplate} from "./utils";
 
 const checkStatus = (response) => {
   if (response.status >= STATUSES.STATUS_MIN && response.status < STATUSES.STATUS_MAX) {
