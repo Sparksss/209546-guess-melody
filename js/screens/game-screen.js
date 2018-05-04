@@ -15,8 +15,6 @@ const Controls = {
   pause: `pause`
 };
 
-const playingTrack = null;
-
 class GameScreen {
   constructor(model) {
     this.model = model;
