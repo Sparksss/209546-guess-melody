@@ -30,8 +30,7 @@ const renderStringResult = (results) => {
     return -1;
   }
   const {playerPosition, quantityPoints} = results;
-  let message = `Вы заняли ${playerPosition + CORRECT_POSITION_IN_ARRAY} место из ${quantityPoints} игроков. Это лучше, чем у ${(quantityPoints - playerPosition) * 10}% игроков`;
-  return message;
+  return `Вы заняли ${playerPosition + CORRECT_POSITION_IN_ARRAY} место из ${quantityPoints} игроков. Это лучше, чем у ${(quantityPoints - playerPosition) * 10}% игроков`;
 };
 
 export {sortGameResults, renderStringResult};

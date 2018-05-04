@@ -113,7 +113,7 @@ class GameScreen {
 
   selectAnswer(answer, isArtist) {
     const timeToAnswer = this.model.lostTime - this.model.currentTime;
-    let currentAnswer = this.model.checkAnswer(answer, `title`, this.model.getData[this.model.currentLevel].answers);
+    const currentAnswer = this.model.checkAnswer(answer, `title`, this.model.getData[this.model.currentLevel].answers);
     this.model.addAnswer({answer: currentAnswer, timeLimit: timeToAnswer});
     if (isArtist) {
       this.canContinue(currentAnswer);
