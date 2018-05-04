@@ -165,11 +165,15 @@ class GameScreen {
 
   checkPlaying(controlsElement, evt) {
     if (!evt.target.classList.contains(`player-control--pause`)) {
-      controlsElement.forEach((element) => {
-        element.classList.remove(`player-control--pause`);
-        element.previousElementSibling.pause();
-        element.previousElementSibling.dataset.control = Controls.play;
-      });
+      try {
+        controlsElement.forEach((element) => {
+          element.classList.remove(`player-control--pause`);
+          element.previousElementSibling.pause();
+          element.previousElementSibling.dataset.control = Controls.play;
+        });
+      } catch (error) {
+        Application.showError(error);
+      }
     }
   }
 }
