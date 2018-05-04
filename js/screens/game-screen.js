@@ -89,7 +89,7 @@ class GameScreen {
       return this.startGame();
     }
     this.stopGame();
-    return Application.showSuccess(this.model.currentState, this.model.getMinutesAndSeconds());
+    return Application.showSuccess(this.model.currentState, this.model.showPassedTheTime());
   }
 
   isRightOfAnswer(answer) {

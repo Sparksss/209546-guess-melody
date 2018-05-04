@@ -4,6 +4,8 @@ const LESS_THEN_TEN_SECONDS = 10;
 const SECONDS_IN_MINUTE = 60;
 const TIME_IS_RUNNING_OUT = 30;
 const TIME_IS_OUT = `end-of-time`;
+const MAX_TIME_FOR_PLAY = 300;
+
 class GameModel {
   constructor(data) {
     this.setData = data;
@@ -105,6 +107,15 @@ class GameModel {
     this.state.answers.push(isCorrect);
   }
 
+  showPassedTheTime() {
+    const timeDifference = MAX_TIME_FOR_PLAY - this.state.time;
+    const minutes = Math.floor(timeDifference / SECONDS_IN_MINUTE);
+    const seconds = timeDifference - minutes * SECONDS_IN_MINUTE;
+    return {
+      minutes,
+      seconds
+    };
+  }
 }
 
 
