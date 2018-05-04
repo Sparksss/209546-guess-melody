@@ -142,12 +142,22 @@ class GameScreen {
   switchPlaying(playElement, control) {
     switch (control) {
       case Controls.play:
-        playElement.play();
-        control = Controls.pause;
+        try {
+          playElement.play();
+          control = Controls.pause;
+        } catch (error) {
+          Application.showError(error);
+        }
+
         break;
       case Controls.pause:
-        playElement.pause();
-        control = Controls.play;
+        try {
+          playElement.pause();
+          control = Controls.play;
+        } catch (error) {
+          Application.showError(error);
+        }
+
         break;
     }
     return control;

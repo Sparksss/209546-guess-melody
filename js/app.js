@@ -62,8 +62,9 @@ class Application {
   static showTimeOut(state) {
     renderTimeOut(state);
   }
-  static showError() {
-    const showError = new ShowError(STATUSES.CONNECTION_LOST);
+  static showError(error) {
+    const textError = `${error}${STATUSES.CONNECTION_LOST}`;
+    const showError = new ShowError(textError);
     renderTemplate(showError.element);
   }
 }
