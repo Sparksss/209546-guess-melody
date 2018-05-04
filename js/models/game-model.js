@@ -61,7 +61,7 @@ class GameModel {
     const seconds = this.state.time - minutes * SECONDS_IN_MINUTE;
     let timeOut = ``;
     if (this.state.time < TIME_IS_RUNNING_OUT) {
-      timeOut = `timer-value-dots`;
+      timeOut = `end-of-time`;
     }
     return {minutes, seconds: seconds < LESS_THEN_TEN_SECONDS ? `0${seconds}` : seconds, timeOut};
   }

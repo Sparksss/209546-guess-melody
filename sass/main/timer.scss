@@ -52,6 +52,11 @@
   }
 }
 
+.end-of-time {
+  animation: blink 1000ms steps(1, end) infinite;
+  color: red;
+}
+
 @keyframes blink {
   0%  { opacity: 0; }
   50% { opacity: 1; }

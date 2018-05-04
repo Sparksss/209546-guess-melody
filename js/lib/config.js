@@ -1,5 +1,5 @@
 const GameConfig = Object.freeze({
-  time: 300,
+  time: 35,
   notes: 3,
   level: 0,
   answers: [],
