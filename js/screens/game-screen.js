@@ -10,6 +10,11 @@ const TYPE_OF_LEVELS = {
   genre: `genre`
 };
 
+const Controls = {
+  play: `play`,
+  pause: `pause`
+};
+
 class GameScreen {
   constructor(model) {
     this.model = model;
@@ -135,13 +140,13 @@ class GameScreen {
 
   switchPlaying(playElement, control) {
     switch (control) {
-      case `play`:
+      case Controls.play:
         playElement.play();
-        control = `pause`;
+        control = Controls.pause;
         break;
-      case `pause`:
+      case Controls.pause:
         playElement.pause();
-        control = `play`;
+        control = Controls.play;
         break;
     }
     return control;
