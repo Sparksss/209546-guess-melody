@@ -12,10 +12,6 @@ class GameModel {
     this.state = initializationState();
   }
 
-  set setData(data) {
-    this.data = data;
-  }
-
   get getData() {
     return this.data;
   }
@@ -54,6 +50,9 @@ class GameModel {
     return this.state.countAnswers;
   }
 
+  set setData(data) {
+    this.data = data;
+  }
 
   tick() {
     --this.state.time;
