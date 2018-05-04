@@ -1,7 +1,7 @@
 import {renderTemplate} from "./../utils";
 import welcomeScreen from "./welcome-view-screen";
 import SuccessView from "./../view/result-success-view";
-import {getResults, speedScore} from "./../modules/get-results";
+import {getResults} from "./../modules/get-results";
 import {GameData} from "./../models/game";
 import {sortGameResults, renderStringResult} from "./../modules/sort-results";
 import {LINKS} from "./../modules/network-data";
@@ -9,11 +9,11 @@ import {LINKS} from "./../modules/network-data";
 const renderSuccess = (state, currentTime) => {
   state.points = getResults(state.answers, state.notes);
   const message = renderStringResult(sortGameResults(GameData.statistics, state));
-  const successView = new SuccessView(state, message, currentTime, speedScore);
+  const successView = new SuccessView(state, message, currentTime);
   window.fetch(LINKS.URL_SEND, {
     method: `POST`,
     body: JSON.stringify({
-      answers: state.points
+      answers: state.points.sum
     }),
     headers: {
       "Content-Type": `application/json`
