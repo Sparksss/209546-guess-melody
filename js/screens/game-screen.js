@@ -15,6 +15,8 @@ const Controls = {
   pause: `pause`
 };
 
+const playingTrack = null;
+
 class GameScreen {
   constructor(model) {
     this.model = model;
@@ -66,6 +68,7 @@ class GameScreen {
         view = new GenreView(data, currentLevel);
         view.onAnswer = this.changeAnswers.bind(this);
         view.submitCheckedAnswers = this.selectedAnswers.bind(this);
+        view.checkPlayingTrack = this.checkPlaying.bind(this);
     }
     view.controlMusic = this.switchPlaying.bind(this);
     return view;
@@ -150,6 +153,16 @@ class GameScreen {
         break;
     }
     return control;
+  }
+
+  checkPlaying(controlsElement, evt) {
+    if (!evt.target.classList.contains(`player-control--pause`)) {
+      controlsElement.forEach((element) => {
+        element.classList.remove(`player-control--pause`);
+        element.previousElementSibling.pause();
+        element.previousElementSibling.dataset.control = Controls.play;
+      });
+    }
   }
 }
 

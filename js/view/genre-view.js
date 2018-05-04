@@ -41,8 +41,10 @@ class GenreView extends AbstractView {
   }
 
   bind() {
-    this.element.querySelectorAll(`.player-control`).forEach((elem) => elem.addEventListener(`click`, (evt) => {
+    const controlPlayingElements = this.element.querySelectorAll(`.player-control`);
+    controlPlayingElements.forEach((elem) => elem.addEventListener(`click`, (evt) => {
       evt.preventDefault();
+      this.checkPlayingTrack(controlPlayingElements, evt);
       evt.target.previousElementSibling.dataset.control = this.controlMusic(evt.target.previousElementSibling, evt.target.previousElementSibling.dataset.control);
       evt.target.classList.toggle(`player-control--pause`);
     }));
@@ -63,6 +65,9 @@ class GenreView extends AbstractView {
   }
 
   controlMusic() {
+  }
+
+  checkPlayingTrack() {
   }
 }
 

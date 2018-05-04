@@ -3,6 +3,7 @@ import {initializationState} from "./../models/initialization-state";
 const LESS_THEN_TEN_SECONDS = 10;
 const SECONDS_IN_MINUTE = 60;
 const TIME_IS_RUNNING_OUT = 30;
+const TIME_IS_OUT = `end-of-time`;
 class GameModel {
   constructor(data) {
     this.setData = data;
@@ -61,7 +62,7 @@ class GameModel {
     const seconds = this.state.time - minutes * SECONDS_IN_MINUTE;
     let timeOut = ``;
     if (this.state.time < TIME_IS_RUNNING_OUT) {
-      timeOut = `end-of-time`;
+      timeOut = TIME_IS_OUT;
     }
     return {minutes, seconds: seconds < LESS_THEN_TEN_SECONDS ? `0${seconds}` : seconds, timeOut};
   }
