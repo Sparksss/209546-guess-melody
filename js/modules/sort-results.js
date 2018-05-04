@@ -1,4 +1,3 @@
-const TIME_OUT = 0;
 const CORRECT_POSITION_IN_ARRAY = 1;
 const sortGameResults = (statistics, {points, notes, time} = {}) => {
   const quantityPoints = statistics.length;
