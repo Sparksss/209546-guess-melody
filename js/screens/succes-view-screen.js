@@ -10,7 +10,7 @@ const renderSuccess = (state, currentTime) => {
   state.points = getResults(state.answers, state.notes);
   const message = renderStringResult(sortGameResults(GameData.statistics, state));
   const successView = new SuccessView(state, message, currentTime);
-  window.fetch(LINKS.URL_SEND, {
+  window.fetch(LINKS.URL_STATISTICS, {
     method: `POST`,
     body: JSON.stringify({
       answers: state.points.sum

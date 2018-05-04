@@ -4,18 +4,12 @@ const sortGameResults = (statistics, {points, notes, time} = {}) => {
   if (!points || !notes || !time) {
     return -1;
   }
-  let playerPosition = 0;
   statistics.push({answers: points});
   statistics.sort((prev, next) => {
     return prev.answers > next.answers;
   });
 
-  for (let i = 0; i < quantityPoints; i++) {
-    if (statistics[i].answers === points) {
-      playerPosition = i;
-      break;
-    }
-  }
+  const playerPosition = statistics.findIndex((elem) => elem.answers === points);
 
   const stat = {
     playerPosition,

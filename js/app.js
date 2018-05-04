@@ -25,7 +25,7 @@ class Application {
     gameData = data;
     const welcome = new WelcomeView();
     renderTemplate(welcome.element);
-    fetch(LINKS.URL_GET_STATISTICS).
+    fetch(LINKS.URL_STATISTICS).
         then(checkStatus).
         then((response) => response.json()).
         then(addStatisticsFromServer).

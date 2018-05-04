@@ -1,9 +1,8 @@
 import {GameData} from "../models/game";
 
 const LINKS = {
-  URL_GET_STATISTICS: `https://es.dump.academy/guess-melody/stats/${GameData.ID}`,
   URL_GET_DATA: `https://es.dump.academy/guess-melody/questions`,
-  URL_SEND: `https://es.dump.academy/guess-melody/stats/${GameData.ID}`
+  URL_STATISTICS: `https://es.dump.academy/guess-melody/stats/${GameData.ID}`
 };
 
 const STATUSES = {
