@@ -33,9 +33,6 @@
   "engines": {
     "node": "8"
   },
-  "dependencies": {
-    "npm": "5.8.0"
-  },
   "babel": {
     "plugins": [
       "transform-es2015-modules-commonjs"
